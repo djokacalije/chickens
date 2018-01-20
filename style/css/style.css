@@ -450,9 +450,35 @@ body {
   border: 2px solid red;
   min-width: 990px;
   min-height: 85vh;
-  margin-left: 5px; }
+  margin-left: 5px;
+  position: relative; }
   #display-main:hover {
     cursor: url("/img/crosshair/crosshair.png"), auto; }
+  #display-main-info {
+    border: 2px solid red;
+    min-width: 700px;
+    max-width: 700px;
+    min-height: 300px;
+    margin: 0 auto;
+    -webkit-transform: translateY(250px);
+    transform: translateY(250px); }
+    #display-main-info-text {
+      text-align: center;
+      color: white;
+      font-size: 40px;
+      font-weight: 700;
+      -webkit-transform: translateY(40px);
+      transform: translateY(40px); }
+    #display-main-info-picture {
+      min-width: 400px;
+      max-width: 400px;
+      max-height: 200px;
+      margin: 10px auto;
+      border: 2px solid blue; }
+      #display-main-info-picture img {
+        height: 140px;
+        -webkit-transform: translateX(130px);
+        transform: translateX(130px); }
 
 #display-left {
   display: -webkit-box;
@@ -488,20 +514,31 @@ body {
     width: 190px;
     height: 250px;
     border: 2px solid red;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 50px; }
   #display-info-level {
     -ms-flex-item-align: center;
     align-self: center;
     width: 190px;
     height: 250px;
     border: 2px solid red;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 50px; }
   #display-info-life {
     -ms-flex-item-align: center;
     align-self: center;
     width: 190px;
     height: 250px;
     border: 2px solid red; }
+    #display-info-life-picture {
+      border: 2px solid blue;
+      min-width: 130px;
+      max-width: 130px;
+      min-height: 50px;
+      max-height: 50px;
+      margin: 20px auto; }
 
 #button {
   display: -webkit-box;

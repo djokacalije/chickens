@@ -3,8 +3,38 @@
   min-width: 990px;
   min-height: 85vh;
   margin-left: 5px;
+  position: relative;
 
   &:hover{
     cursor: url('/img/crosshair/crosshair.png'), auto;
+  }
+
+  &-info{
+    border: 2px solid red;
+    min-width: 700px;
+    max-width: 700px;
+    min-height: 300px;
+    margin: 0 auto;
+    transform: translateY(250px);
+
+    &-text{
+      text-align: center;
+      color: white;
+      font-size: 40px;
+      font-weight: 700;
+      transform: translateY(40px);
+    }
+
+    &-picture{
+      min-width: 400px;
+      max-width: 400px;
+      max-height: 200px;
+      margin: 10px auto;
+      border: 2px solid blue;
+      img{
+        height: 140px;
+        transform: translateX(130px);
+      }
+    }
   }
 }
