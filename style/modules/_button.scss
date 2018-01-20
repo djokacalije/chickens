@@ -1,0 +1,46 @@
+#button{
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    min-width: 1200px;
+    min-height: 100px;
+    margin: 10px auto;
+    border: 3px solid red;
+
+    &-info{
+        border: 2px solid blue;
+        min-width: 600px;
+        max-width: 600px;
+        min-height: 50px;
+        margin: 0 auto;
+        transform: translateX(100px);
+
+        &-text{
+            color: white;
+            text-align: center;
+            font-weight: 700;
+        }
+    }
+    &-startGame{
+        border: 2px solid green;
+        min-width: 200px;
+        max-width: 200px;
+        min-height: 35px;
+        max-height: 35px;
+        margin: 3px auto;
+        transform: translateX(100px);
+        border-radius: 20px;
+
+        &-text{
+            color: white;
+            text-align: center;
+            transform: translateY(-13px);
+            font-size: 18px;
+            font-weight: 700;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
