@@ -536,9 +536,17 @@ body {
       border: 2px solid blue;
       min-width: 130px;
       max-width: 130px;
-      min-height: 50px;
-      max-height: 50px;
-      margin: 20px auto; }
+      min-height: 53px;
+      max-height: 53px;
+      margin: 5px auto; }
+    #display-info-life-cowboy-picture {
+      border: 2px solid blue;
+      min-height: 180px;
+      max-height: 180px;
+      max-width: 200px;
+      margin: 0 auto; }
+      #display-info-life-cowboy-picture img {
+        height: 180px; }
 
 #button {
   display: -webkit-box;
