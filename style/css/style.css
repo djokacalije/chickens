@@ -393,6 +393,13 @@ template {
 [hidden] {
   display: none; }
 
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  font-family: 'Supermercado One', cursive; }
+
 .video-background {
   background: #000;
   position: fixed;
@@ -441,9 +448,11 @@ template {
 
 #display-main {
   border: 2px solid red;
-  min-width: 982px;
+  min-width: 990px;
   min-height: 85vh;
   margin-left: 5px; }
+  #display-main:hover {
+    cursor: url("/img/crosshair/crosshair.png"), auto; }
 
 #display-left {
   display: -webkit-box;
@@ -493,3 +502,48 @@ template {
     width: 190px;
     height: 250px;
     border: 2px solid red; }
+
+#button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 1200px;
+  min-width: 1200px;
+  min-height: 100px;
+  margin: 10px auto;
+  border: 3px solid red; }
+  #button-info {
+    border: 2px solid blue;
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 50px;
+    margin: 0 auto;
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px); }
+    #button-info-text {
+      color: white;
+      text-align: center;
+      font-weight: 700; }
+  #button-startGame {
+    border: 2px solid green;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 35px;
+    max-height: 35px;
+    margin: 3px auto;
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+    border-radius: 20px; }
+    #button-startGame-text {
+      color: white;
+      text-align: center;
+      -webkit-transform: translateY(-13px);
+      transform: translateY(-13px);
+      font-size: 18px;
+      font-weight: 700; }
+      #button-startGame-text:hover {
+        cursor: pointer; }

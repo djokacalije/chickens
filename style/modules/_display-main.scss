@@ -1,6 +1,10 @@
 #display-main{
   border: 2px solid red;
-  min-width: 982px;
+  min-width: 990px;
   min-height: 85vh;
   margin-left: 5px;
+
+  &:hover{
+    cursor: url('/img/crosshair/crosshair.png'), auto;
+  }
 }
