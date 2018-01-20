@@ -441,40 +441,42 @@ body {
   max-width: 1200px;
   z-index: 9999;
   margin: 0 auto;
-  min-height: 85vh;
-  border: 2px solid black;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  min-height: 85vh; }
 
 #display-main {
-  border: 2px solid red;
+  border: 5px solid #98351C;
   min-width: 990px;
   min-height: 85vh;
   margin-left: 5px;
-  position: relative; }
+  position: relative;
+  background: rgba(255, 255, 255, 0.623); }
   #display-main:hover {
     cursor: url("/img/crosshair/crosshair.png"), auto; }
   #display-main-info {
-    border: 2px solid red;
+    border: 10px solid #98351C;
     min-width: 700px;
     max-width: 700px;
     min-height: 300px;
+    max-height: 500px;
     margin: 0 auto;
     -webkit-transform: translateY(250px);
-    transform: translateY(250px); }
+    transform: translateY(250px);
+    background: rgba(255, 255, 255, 0.623); }
+    #display-main-info-chicken {
+      position: absolute;
+      top: 10px; }
     #display-main-info-text {
       text-align: center;
-      color: white;
+      color: #98351C;
       font-size: 40px;
       font-weight: 700;
-      -webkit-transform: translateY(40px);
-      transform: translateY(40px); }
+      -webkit-transform: translateY(10px);
+      transform: translateY(10px); }
     #display-main-info-picture {
       min-width: 400px;
       max-width: 400px;
       max-height: 200px;
-      margin: 10px auto;
-      border: 2px solid blue; }
+      margin: 10px auto; }
       #display-main-info-picture img {
         height: 140px;
         -webkit-transform: translateX(130px);
@@ -487,7 +489,6 @@ body {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  border: 2px solid blue;
   width: 200px;
   min-height: 85vh; }
 
@@ -504,7 +505,6 @@ body {
   justify-content: center;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 2px solid black;
   min-width: 200px;
   min-height: 85vh;
   padding: 5px; }
@@ -513,34 +513,46 @@ body {
     align-self: center;
     width: 190px;
     height: 250px;
-    border: 2px solid red;
     margin-bottom: 10px;
     text-align: center;
-    font-size: 50px; }
+    font-size: 50px;
+    font-weight: 900;
+    background: rgba(0, 0, 0, 0.548);
+    color: white;
+    border: 5px solid #98351C;
+    border-radius: 15px;
+    -webkit-box-shadow: -1px -1px 50px #98351C;
+    box-shadow: -1px -1px 50px #98351C; }
   #display-info-level {
     -ms-flex-item-align: center;
     align-self: center;
     width: 190px;
     height: 250px;
-    border: 2px solid red;
     margin-bottom: 10px;
     text-align: center;
-    font-size: 50px; }
+    font-size: 50px;
+    background: rgba(0, 0, 0, 0.548);
+    color: white;
+    border: 5px solid #98351C;
+    border-radius: 15px;
+    -webkit-box-shadow: -1px -1px 50px #98351C;
+    box-shadow: -1px -1px 50px #98351C; }
   #display-info-life {
     -ms-flex-item-align: center;
     align-self: center;
     width: 190px;
     height: 250px;
-    border: 2px solid red; }
+    border: 5px solid #98351C;
+    border-radius: 15px;
+    -webkit-box-shadow: -1px -1px 50px #98351C;
+    box-shadow: -1px -1px 50px #98351C; }
     #display-info-life-picture {
-      border: 2px solid blue;
       min-width: 130px;
       max-width: 130px;
       min-height: 53px;
       max-height: 53px;
       margin: 5px auto; }
     #display-info-life-cowboy-picture {
-      border: 2px solid blue;
       min-height: 180px;
       max-height: 180px;
       max-width: 200px;
@@ -559,26 +571,26 @@ body {
   max-width: 1200px;
   min-width: 1200px;
   min-height: 100px;
-  margin: 10px auto;
-  border: 3px solid red; }
+  margin: 10px auto; }
   #button-info {
-    border: 2px solid blue;
+    border: 5px solid #98351C;
     min-width: 600px;
     max-width: 600px;
     min-height: 50px;
     margin: 0 auto;
     -webkit-transform: translateX(100px);
-    transform: translateX(100px); }
+    transform: translateX(100px);
+    background: rgba(35, 109, 35, 0.603); }
     #button-info-text {
       color: white;
       text-align: center;
       font-weight: 700; }
   #button-startGame {
-    border: 2px solid green;
+    border: 5px solid green;
     min-width: 200px;
     max-width: 200px;
-    min-height: 35px;
-    max-height: 35px;
+    min-height: 45px;
+    max-height: 45px;
     margin: 3px auto;
     -webkit-transform: translateX(100px);
     transform: translateX(100px);
@@ -586,8 +598,8 @@ body {
     #button-startGame-text {
       color: white;
       text-align: center;
-      -webkit-transform: translateY(-13px);
-      transform: translateY(-13px);
+      -webkit-transform: translateY(-10px);
+      transform: translateY(-10px);
       font-size: 18px;
       font-weight: 700; }
       #button-startGame-text:hover {

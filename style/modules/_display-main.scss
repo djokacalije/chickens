@@ -1,28 +1,35 @@
 #display-main{
-  border: 2px solid red;
+  border: 5px solid $chickenColor;
   min-width: 990px;
   min-height: 85vh;
   margin-left: 5px;
   position: relative;
+  background: $mainWhite;
 
   &:hover{
     cursor: url('/img/crosshair/crosshair.png'), auto;
   }
 
   &-info{
-    border: 2px solid red;
+    border: 10px solid $chickenColor;
     min-width: 700px;
     max-width: 700px;
     min-height: 300px;
+    max-height: 500px;
     margin: 0 auto;
     transform: translateY(250px);
+    background:$mainWhite;
 
+    &-chicken{
+      position: absolute;
+      top:10px;
+    }
     &-text{
       text-align: center;
-      color: white;
+      color: $chickenColor;
       font-size: 40px;
       font-weight: 700;
-      transform: translateY(40px);
+      transform: translateY(10px);
     }
 
     &-picture{
@@ -30,7 +37,6 @@
       max-width: 400px;
       max-height: 200px;
       margin: 10px auto;
-      border: 2px solid blue;
       img{
         height: 140px;
         transform: translateX(130px);
