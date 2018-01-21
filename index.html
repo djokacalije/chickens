@@ -69,22 +69,33 @@
                 <p id="button-startGame-text">Start Game</p>
             </div>
         </div>
-
+        <script src="/js/howler.min.js"></script>
         <script>
+          var shoot = new Howl({
+              src:['/sounds/gunShot.ogg']
+          });
           var counter = 6;
           var indikator = document.getElementById('display-main-indikator-counter');  
+          var sound = new Howl({
+              src:['sounds/startGame.ogg']
+          })
           var startGameCounter = setInterval(function(){
             counter--;
+            shoot.play();
             indikator.classList.toggle('startGameIndikator');
             indikator.textContent = counter;
             if(counter <=0){
+                sound.play();
                 indikator.textContent = 'SHOOT!'
                 clearInterval(startGameCounter);
                 setTimeout(function(){
                     indikator.style.display = 'none';       
-                },1000)
+                },2000)
             }
-          },1000)
+          },1000);
+          document.getElementById('display-main').addEventListener('click',function(){
+              shoot.play();
+          })
         </script>
 </body>
 
