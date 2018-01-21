@@ -47,6 +47,11 @@
             </div>
         </div>
         <div id="display-main">
+            <img id="chicken-1" src="/img/chicken/chicken-1.png" alt="chicken">
+            <img id="chicken-2" src="/img/chicken/chicken-2.png" alt="chicken">
+            <img id="chicken-3" src="/img/chicken/chicken-3.png" alt="chicken">
+            <p id="display-main-indikator">Press start game button to begin</p>
+            <p id="display-main-indikator-counter"></p>
             <div id="display-main-info">
                     <img id="display-main-info-chicken" src="/img/chicken/chicken-1.png" alt="chicken">
                 <p id="display-main-info-text">GAME OVER YOUR SCORE IS: <span id="display-main-info-text-score">100</span></p>
@@ -64,6 +69,23 @@
                 <p id="button-startGame-text">Start Game</p>
             </div>
         </div>
+
+        <script>
+          var counter = 6;
+          var indikator = document.getElementById('display-main-indikator-counter');  
+          var startGameCounter = setInterval(function(){
+            counter--;
+            indikator.classList.toggle('startGameIndikator');
+            indikator.textContent = counter;
+            if(counter <=0){
+                indikator.textContent = 'SHOOT!'
+                clearInterval(startGameCounter);
+                setTimeout(function(){
+                    indikator.style.display = 'none';       
+                },1000)
+            }
+          },1000)
+        </script>
 </body>
 
 </html>

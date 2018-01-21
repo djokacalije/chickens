@@ -8,6 +8,7 @@
     padding: 5px;
 
 
+
     &-score{
         align-self: center;
         width: 190px;
@@ -50,6 +51,7 @@
             min-height: 53px;
             max-height: 53px;
             margin:5px auto;
+            transform: translateX(10px);
         }
      &-cowboy-picture{
          min-height: 180px;

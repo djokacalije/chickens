@@ -450,8 +450,28 @@ body {
   margin-left: 5px;
   position: relative;
   background: rgba(255, 255, 255, 0.623); }
+  #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3 {
+    display: none;
+    position: absolute; }
   #display-main:hover {
     cursor: url("/img/crosshair/crosshair.png"), auto; }
+  #display-main-indikator {
+    max-width: 500px;
+    text-align: center;
+    font-weight: 700;
+    margin: 0 auto;
+    font-size: 50px;
+    -webkit-transform: translateY(350px);
+    transform: translateY(350px);
+    display: none; }
+    #display-main-indikator-counter {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+      font-weight: 700;
+      font-size: 150px;
+      -webkit-transform: translateY(300px);
+      transform: translateY(300px); }
   #display-main-info {
     border: 10px solid #98351C;
     min-width: 700px;
@@ -461,7 +481,8 @@ body {
     margin: 0 auto;
     -webkit-transform: translateY(250px);
     transform: translateY(250px);
-    background: rgba(255, 255, 255, 0.623); }
+    background: rgba(255, 255, 255, 0.623);
+    display: none; }
     #display-main-info-chicken {
       position: absolute;
       top: 10px; }
@@ -551,7 +572,9 @@ body {
       max-width: 130px;
       min-height: 53px;
       max-height: 53px;
-      margin: 5px auto; }
+      margin: 5px auto;
+      -webkit-transform: translateX(10px);
+      transform: translateX(10px); }
     #display-info-life-cowboy-picture {
       min-height: 180px;
       max-height: 180px;
@@ -604,3 +627,6 @@ body {
       font-weight: 700; }
       #button-startGame-text:hover {
         cursor: pointer; }
+
+.startGameIndikator {
+  color: #98351C; }
