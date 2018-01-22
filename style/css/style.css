@@ -462,8 +462,7 @@ body {
     margin: 0 auto;
     font-size: 50px;
     -webkit-transform: translateY(350px);
-    transform: translateY(350px);
-    display: none; }
+    transform: translateY(350px); }
     #display-main-indikator-counter {
       max-width: 500px;
       margin: 0 auto;
