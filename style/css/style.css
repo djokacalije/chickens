@@ -449,7 +449,8 @@ body {
   min-height: 85vh;
   margin-left: 5px;
   position: relative;
-  background: rgba(255, 255, 255, 0.623); }
+  background: rgba(255, 255, 255, 0.623);
+  overflow: auto; }
   #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3 {
     display: none;
     position: absolute; }

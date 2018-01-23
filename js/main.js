@@ -1,37 +1,6 @@
-var elements = {
-    score:document.getElementById('display-info-score-text'),
-    level:document.getElementById('display-info-level-text'),
-    life:document.getElementById('display-info-life-picture'),
-    cowboy:document.getElementById('display-info-life-cowboy-picture'),
-    display:document.getElementById('display-main'),
-    displayIndikator:document.getElementById('display-main-indikator'),
-    displayCounter:document.getElementById('display-main-indikator-counter'),
-    displayGameOver:document.getElementById('display-main-info'),
-    gameOverScore:document.getElementById('display-main-info-text-score'),
-    trophy:document.getElementById('throphy'),
-    buttonStart:document.getElementById('button-startGame-text'),
-    chicken1:document.getElementById('chicken-1'),
-    chicken2:document.getElementById('chicken-2'),
-    chicken3:document.getElementById('chicken-3'),
-}
 
-var sound = {
-    intro: new Howl({
-        src:['/sounds/intro.ogg'],
-        loop:true
-    }),
-    gun: new Howl({
-        src:['/sounds/gunShot.ogg']
-    }),
-    chicken: new Howl({
-        src:['/sounds/chicken.ogg']
-    }),
-    start: new Howl({
-        src:['/sounds/startGame.ogg']
-    }),
-}
 var shootChicken = (function(){
-    var level = 1;
+    var level = 3;
     var lifeLeft = 3;
     var play = false;
     var score = 0;
@@ -45,6 +14,7 @@ var shootChicken = (function(){
     var writeScore = function(score){
         elements.score.textContent = score;
     }
+
 
     var writeGameOverScore = function(score){
         elements.displayGameOver.style.display = 'block';
@@ -88,7 +58,7 @@ var shootChicken = (function(){
         return chicken[Math.floor(Math.random()*chicken.length)];
     };
     var speed = function(){
-        var speed = [5,35,40,25];
+        var speed = [3,6,9,12];
         return speed[Math.floor(Math.random()*speed.length)];
     }
     var randomPosition = function(from,to){
@@ -102,21 +72,46 @@ var shootChicken = (function(){
             elements.life.appendChild(img);
         }
     }
-
+    var chickenSetting = function(chicken,start,end){
+        chicken.setAttribute('src','/img/chicken/'+randomChicken())
+        chicken.style.top = -50+'px';
+        chicken.style.left = randomPosition(start,end)+'px';
+        chicken.style.display = 'block';
+    }
+    var checkLevel = function(level){
+        if(level==1){
+           chickenSetting(elements.chicken1,20,900);
+        }
+        if(level==2){
+            chickenSetting(elements.chicken1,20,450);
+            chickenSetting(elements.chicken2,500,900);
+        }
+        if(level==3){
+            chickenSetting(elements.chicken1,20,300);
+            chickenSetting(elements.chicken2,350,750);
+            chickenSetting(elements.chicken3,800,900);
+        }
+    }
     var action = function(){
+        counterTimer();
         setTimeout(function(){
-            elements.chicken1.setAttribute('src','.img/chicken/'+randomChicken);
-            elements.chicken1.style.top = -50+'px';
-            elements.chicken1.style.left = randomPosition(100,300)+'px';
-            elements.chicken1.style.display = 'block';
-            var speed = speed();
+            var topPosition = -50;
+            checkLevel(level);
+            writeLife();
+            var randomSpeed=speed();
             var intervalMove = setInterval(function(){
-    
-            },1000)
+                topPosition+=randomSpeed;
+                topPosition++;
+                elements.chicken1.style.top = topPosition+'px';
+                elements.chicken2.style.top = topPosition+'px';
+                elements.chicken3.style.top = topPosition+'px';
+            },100)
         },8000)
     }
 
     return{
-        counter:counterTimer
+        proba:action
     }
 }());
+
+// shootChicken.proba();
