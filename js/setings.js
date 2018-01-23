@@ -31,9 +31,3 @@ var sound = {
     }),
 }
 
-function chickenSetting(chicken,start,end){
-           chicken.setAttribute('src','/img/chicken/'+randomChicken())
-           chicken.style.top = -50+'px';
-           chicken.style.left = randomPosition(start,end)+'px';
-           chicken.style.display = 'block';
-}

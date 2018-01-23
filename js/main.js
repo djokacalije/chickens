@@ -4,10 +4,12 @@ var shootChicken = (function(){
     var lifeLeft = 3;
     var play = false;
     var score = 0;
+    var intervalMove ;
+    var counterInterval;
     
     
     sound.intro.play();
-    var introInterval = setInterval(function(){
+     introInterval = setInterval(function(){
         elements.displayIndikator.classList.toggle('startGameIndikator');
     },500);
 
@@ -36,7 +38,7 @@ var shootChicken = (function(){
         elements.displayIndikator.style.display = 'none';
         elements.displayCounter.style.display = 'block';
         var timer = 6
-        var counterInterval = setInterval(function(){
+         counterInterval = setInterval(function(){
             sound.gun.play();
             timer--;
             elements.displayCounter.classList.toggle('startGameIndikator');
@@ -68,7 +70,7 @@ var shootChicken = (function(){
         for(var i = 0;i<lifeLeft;i++){
             var img = document.createElement('img');
             img.setAttribute('src',"/img/Egg/egg.png");
-            img.setAttribute('alt','chicken');
+            img.setAttribute('alt','egg');
             elements.life.appendChild(img);
         }
     }
@@ -92,6 +94,7 @@ var shootChicken = (function(){
             chickenSetting(elements.chicken3,800,900);
         }
     }
+
     var action = function(){
         counterTimer();
         setTimeout(function(){
@@ -99,7 +102,7 @@ var shootChicken = (function(){
             checkLevel(level);
             writeLife();
             var randomSpeed=speed();
-            var intervalMove = setInterval(function(){
+                 intervalMove = setInterval(function(){
                 topPosition+=randomSpeed;
                 topPosition++;
                 elements.chicken1.style.top = topPosition+'px';
