@@ -35,6 +35,10 @@ gulp.task('styles', function(){
     watch('./style/**/*.scss', function() {
       gulp.start('cssInject');
     });
+
+    watch('./js/*js',function(){
+      browserSync.reload();
+    })
   
   });
   
