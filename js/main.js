@@ -1,11 +1,14 @@
 
 var shootChicken = (function(){
-    var level = 3;
+    var level = 1;
     var lifeLeft = 3;
     var play = false;
     var score = 0;
     var intervalMove ;
     var counterInterval;
+    var introInterval;
+    var speedIntertval = 50;
+    var chickenShoot = 0;
     
     
     sound.intro.play();
@@ -17,7 +20,9 @@ var shootChicken = (function(){
         elements.score.textContent = score;
     }
 
+    var showLife = function(){
 
+    }
     var writeGameOverScore = function(score){
         elements.displayGameOver.style.display = 'block';
         elements.gameOverScore.textContent = score;
@@ -60,20 +65,13 @@ var shootChicken = (function(){
         return chicken[Math.floor(Math.random()*chicken.length)];
     };
     var speed = function(){
-        var speed = [3,6,9,12];
+        var speed = [2,4,5,6];
         return speed[Math.floor(Math.random()*speed.length)];
     }
     var randomPosition = function(from,to){
         return Math.floor(Math.random()*(to-from)+from);
     }
-    var writeLife = function(){
-        for(var i = 0;i<lifeLeft;i++){
-            var img = document.createElement('img');
-            img.setAttribute('src',"/img/Egg/egg.png");
-            img.setAttribute('alt','egg');
-            elements.life.appendChild(img);
-        }
-    }
+    
     var chickenSetting = function(chicken,start,end){
         chicken.setAttribute('src','/img/chicken/'+randomChicken())
         chicken.style.top = -50+'px';
@@ -91,30 +89,54 @@ var shootChicken = (function(){
         if(level==3){
             chickenSetting(elements.chicken1,20,300);
             chickenSetting(elements.chicken2,350,750);
-            chickenSetting(elements.chicken3,800,900);
+            chickenSetting(elements.chicken3,800,850);
         }
     }
-
+   var checkDown = function(chicken,display,from,to){
+        if(chicken.offsetTop>display.offsetHeight){
+            lifeLeft--;
+            chicken.style.display = 'none';
+            chickenSetting(chicken,from,to);
+        }
+   }
+   var lifeDown = function(){
+       if(lifeLeft==2){
+           $('#life-3').hide();
+       }
+       if(lifeLeft==1){
+           $('#life-2').hide();
+       }
+       if(lifeLeft==0){
+           $('#life-1').hide()
+       }
+   };
+   var checkGameOver = function(){
+       if(lifeLeft<=0){
+           clearInterval(intervalMove);
+           elements.chicken1.style.display = 'none';
+           elements.chicken2.style.display = 'none';
+           elements.chicken3.style.display = 'none';
+       }
+   }
     var action = function(){
-        counterTimer();
-        setTimeout(function(){
-            var topPosition = -50;
+            var chicken1= speed();
+            var chicken2 = speed();
+            var chicken3 = speed();
             checkLevel(level);
-            writeLife();
-            var randomSpeed=speed();
-                 intervalMove = setInterval(function(){
-                topPosition+=randomSpeed;
-                topPosition++;
-                elements.chicken1.style.top = topPosition+'px';
-                elements.chicken2.style.top = topPosition+'px';
-                elements.chicken3.style.top = topPosition+'px';
-            },100)
-        },8000)
+                intervalMove = setInterval(function(){ 
+                    $("#chicken-1").css('top', $("#chicken-1").position().top +chicken1);     
+                    $("#chicken-2").css('top', $("#chicken-2").position().top +chicken2);     
+                    $("#chicken-3").css('top', $("#chicken-3").position().top +chicken3);     
+                    checkDown(elements.chicken1,elements.display,20,300);
+                    checkDown(elements.chicken2,elements.display,350,750);
+                    checkDown(elements.chicken3,elements.display,800,850);
+                    lifeDown();
+                    // checkGameOver();
+            },speedIntertval)
     }
-
     return{
         proba:action
     }
 }());
 
-// shootChicken.proba();
+shootChicken.proba();
