@@ -10,9 +10,11 @@ var elements = {
     gameOverScore:document.getElementById('display-main-info-text-score'),
     trophy:document.getElementById('throphy'),
     buttonStart:document.getElementById('button-startGame-text'),
+    blood:document.getElementById('blood'),
     chicken1:document.getElementById('chicken-1'),
     chicken2:document.getElementById('chicken-2'),
     chicken3:document.getElementById('chicken-3'),
+    chicken4:document.getElementById('chicken-4')
 }
 
 var sound = {
@@ -30,4 +32,5 @@ var sound = {
         src:['/sounds/startGame.ogg']
     }),
 }
+
 

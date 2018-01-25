@@ -451,11 +451,16 @@ body {
   position: relative;
   background: rgba(255, 255, 255, 0.623);
   overflow: hidden; }
-  #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3 {
+  #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3, #display-main #chicken-4, #display-main #chicken-5 {
     display: none;
-    position: absolute; }
+    position: absolute;
+    z-index: 2; }
+  #display-main #blood {
+    position: absolute;
+    z-index: 1;
+    display: none; }
   #display-main:hover {
-    cursor: url("/img/crosshair/crosshair.png"), auto; }
+    cursor: url("/img/crosshair/corsshair-small.png"), auto; }
   #display-main-indikator {
     max-width: 500px;
     text-align: center;
