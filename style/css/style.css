@@ -441,7 +441,11 @@ body {
   max-width: 1200px;
   z-index: 9999;
   margin: 0 auto;
-  min-height: 85vh; }
+  min-height: 85vh;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
 
 #display-main {
   border: 5px solid #98351C;
@@ -450,15 +454,27 @@ body {
   margin-left: 5px;
   position: relative;
   background: rgba(255, 255, 255, 0.623);
-  overflow: hidden; }
-  #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3, #display-main #chicken-4, #display-main #chicken-5 {
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3, #display-main #chicken-4, #display-main #chicken-5, #display-main #chicken-6 {
     display: none;
     position: absolute;
-    z-index: 2; }
+    z-index: 2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
   #display-main #blood {
     position: absolute;
     z-index: 1;
-    display: none; }
+    display: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
   #display-main:hover {
     cursor: url("/img/crosshair/corsshair-small.png"), auto; }
   #display-main-indikator {

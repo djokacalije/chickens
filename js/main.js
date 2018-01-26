@@ -1,21 +1,21 @@
-
 var shootChicken = (function () {
-    var level = 4;
+    var level = 1;
     var lifeLeft = 3;
-    var play = false;
     var gemeOver = false;
     var score = 1;
-    var intervalMove;
     var counterInterval;
     var introInterval;
-    var speedIntertval = 50;
-    var chickenShoot = 0;
+    var speedIntertval = 40;
+    var intervalGame;
+    var play = false;
 
-    elements.displayIndikator.style.display = 'none';
-    // sound.intro.play();
-    //  introInterval = setInterval(function(){
-    //     elements.displayIndikator.classList.toggle('startGameIndikator');
-    // },500);
+    $("body").on("contextmenu",function(e){
+        return false;
+      });
+    sound.intro.play();
+     introInterval = setInterval(function(){
+        elements.displayIndikator.classList.toggle('startGameIndikator');
+    },500);
 
     var randomNumbers = function (start, end, count) {
         var returnArray = [],
@@ -30,17 +30,16 @@ var shootChicken = (function () {
         }
         return returnArray;
     };
-    var levelUp = function (score, level) {
-        if (score >= 10) {
-            level++;
+    var levelUp = function (score) {
+        if (score >= 50) {
+          level=2;
         }
-        if (score >= 20) {
-            level++;
+        if (score >= 100) {
+          level=3;
         }
-        if (score >= 30) {
-            level++;
+        if (score >= 150) {
+           level=4;
         }
-
     }
     var writeScore = function (score) {
         elements.score.textContent = score;
@@ -50,19 +49,19 @@ var shootChicken = (function () {
         elements.level.textContent = level;
     }
     var writeGameOverScore = function (score) {
-        if (gameOver == true) {
+       
             elements.displayGameOver.style.display = 'block';
             elements.gameOverScore.textContent = score;
-            if (score <= 10) {
+            if (score <= 100) {
                 elements.trophy.setAttribute('src', '/img/throphy/trophy-bronze.png');
             }
-            if (score >= 12) {
+            if (score >= 100) {
                 elements.trophy.setAttribute('src', '/img/throphy/trophy-silver.png');
             }
-            if (score >= 30) {
+            if (score >= 250) {
                 elements.trophy.setAttribute('src', '/img/throphy/trophy-gold.png');
             }
-        }
+        
     }
 
     var counterTimer = function () {
@@ -92,40 +91,14 @@ var shootChicken = (function () {
         var chicken = ['chicken-1.png', 'chicken-2.png', 'chicken-3.png'];
         return chicken[Math.floor(Math.random() * chicken.length)];
     };
-    var speed = function () {
-        var speed = [4, 6, 8, 7];
-        return speed[Math.floor(Math.random() * speed.length)];
-    }
     
     var chickenSetting = function (chicken, position) {
         chicken.setAttribute('src', '/img/chicken/' + randomChicken())
-        chicken.style.top = -50 + 'px';
+        chicken.style.top = -150 + 'px';
         chicken.style.left = position + 'px';
         chicken.style.display = 'block';
     }
-    var chickenPositions = function (level) {
-        var position = randomNumbers(10, 900, 9);
-        console.log(position);
-        if (level == 1) {
-            chickenSetting(elements.chicken1, position[0]);
-        }
-        if (level == 2) {
-            chickenSetting(elements.chicken1, position[1]);
-            chickenSetting(elements.chicken2, position[2]);
-        }
-        if (level == 3) {
-            chickenSetting(elements.chicken1, position[3]);
-            chickenSetting(elements.chicken2, position[4]);
-            chickenSetting(elements.chicken3, position[5]);
-        }
-        if (level == 4) {
-            chickenSetting(elements.chicken1, position[6]);
-            chickenSetting(elements.chicken2, position[7]);
-            chickenSetting(elements.chicken3, position[8]);
-            chickenSetting(elements.chicken4, position[9]);
-        }
-
-    }
+    
     var checkDown = function (chicken, display, position) {
         if (chicken.offsetTop > display.offsetHeight) {
             lifeLeft--;
@@ -135,23 +108,24 @@ var shootChicken = (function () {
     }
     var lifeDown = function () {
         if (lifeLeft == 2) {
-            $('#life-3').hide();
+            elements.lifeEgg3.style.display = 'none';
         }
         if (lifeLeft == 1) {
-            $('#life-2').hide();
+            elements.lifeEgg2.style.display = 'none';
         }
         if (lifeLeft == 0) {
-            $('#life-1').hide()
+            elements.lifeEgg1.style.display = 'none';
         }
     };
     var checkGameOver = function () {
         if (lifeLeft <= 0) {
-            clearInterval(intervalMove);
+            clearInterval(intervalGame);
             elements.chicken1.style.display = 'none';
             elements.chicken2.style.display = 'none';
             elements.chicken3.style.display = 'none';
             elements.chicken4.style.display = 'none';
-            gameOver = true;
+            writeGameOverScore(score);
+            sound.intro.play();
         }
     }
     var addBlo0d = function (positionLeft, positionTop) {
@@ -160,6 +134,9 @@ var shootChicken = (function () {
         elements.blood.style.display = 'block'
     }
     var shoot = function () {
+        $("img").on("contextmenu",function(){
+            return false;
+         }); 
         elements.display.addEventListener('click', function (event) {
             var random = randomNumbers(10, 900, 4);
             sound.gun.play();
@@ -195,21 +172,35 @@ var shootChicken = (function () {
 
         })
     }
-    
+    var swichLevel = function(){
+        if(level==2){
+            console.log('tu sam');
+        clearTimeout(level2);
+        }
+        
+    }
+   
     var action = function () {
+        play = true;
+        var position = randomNumbers(10,900,4);
         shoot();
-        chickenPositions(level);
-        var chicken1 = speed();
-        var chicken2 = speed();
-        var chicken3 = speed();
-        var chicken4 = speed();
-        chickenSetting(elements.chicken1,Math.floor(Math.random()*(900-10)+10));
-        intervalMove = setInterval(function () {
+        var levelSpeed = [6,7,10,12]
+        chickenSetting(elements.chicken1,position[0]);
+         var level2 = setTimeout(function(){
+            chickenSetting(elements.chicken2,position[1])
+        },20000);
+        var level3 = setTimeout(function(){
+            chickenSetting(elements.chicken3,position[2])
+        },30000);
+        var level4 = setTimeout(function(){
+            chickenSetting(elements.chicken4,position[3])
+        },40000);
+        intervalGame = setInterval(function () {
             var randomPositions = randomNumbers(10, 900, 4);
-            $("#chicken-1").css('top', $("#chicken-1").position().top + chicken1);
-            $("#chicken-2").css('top', $("#chicken-2").position().top + chicken2);
-            $("#chicken-3").css('top', $("#chicken-3").position().top + chicken3);
-            $("#chicken-4").css('top', $("#chicken-4").position().top + chicken4);
+            $("#chicken-1").css('top', $("#chicken-1").position().top + levelSpeed[0]);
+            $("#chicken-2").css('top', $("#chicken-2").position().top + levelSpeed[1]);
+            $("#chicken-3").css('top', $("#chicken-3").position().top + levelSpeed[2]);
+            $("#chicken-4").css('top', $("#chicken-4").position().top + levelSpeed[3]);
             checkDown(elements.chicken1, elements.display, randomPositions[0]);
             checkDown(elements.chicken2, elements.display, randomPositions[1]);
             checkDown(elements.chicken3, elements.display, randomPositions[2]);
@@ -217,13 +208,27 @@ var shootChicken = (function () {
             lifeDown();
             writeScore(score);
             writeLevel(level);
-            // checkGameOver();
-            // writeGameOverScore(score);
-           
-        }, speedIntertval)
+            levelUp(score);
+            checkGameOver();
+        }, speedIntertval);
+        
+    }
+    var start = function(){
+        elements.buttonStart.addEventListener('click',function(){
+            if(play==false){
+                elements.buttonText.textContent = 'Reset Game';
+                counterTimer();
+                setTimeout(function(){
+                    action();
+                },6000)
+            }
+            if(play==true){
+                window.location.reload();
+            }
+        })
     }
     return {
-        proba: action
+        proba: start
     }
 }());
 
