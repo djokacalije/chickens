@@ -1,25 +1,24 @@
 var shootChicken = (function () {
-    var level = 1;
-    var lifeLeft = 3;
-    var score = 0;
-    var counterInterval;
-    var introInterval;
-    var speedInterval = 40;
-    var intervalGame;
-    var play = false;
-    var levelSpeed = [4, 7, 9, 11];
-    var width = {
-        min:10,
-        max:900
-    }
-    $("body").on("contextmenu", function (e) {
-        return false;
+    var level = 1,
+        lifeLeft = 3,
+        score = 0,
+        counterInterval,
+        introInterval,
+        speedInterval = 40,
+        intervalGame,
+        play = false,
+        levelSpeed = [4, 7, 9, 11],
+        width = {
+            min: 10,
+            max: 900
+        };
+    document.addEventListener('contextmenu',function(e){
+        e.preventDefault();
     });
     sound.intro.play();
     introInterval = setInterval(function () {
         elements.displayIndikator.classList.toggle('startGameIndikator');
     }, 500);
-
     var randomNumbers = function (start, end, count) {
         var returnArray = [],
             randomNumber;
@@ -128,7 +127,7 @@ var shootChicken = (function () {
             hide(elements['lifeEgg' + lifeLeft]);
         }
     };
-    var checkGameOver = function () {
+    var checkGameOver = function (lifeLeft) {
         if (lifeLeft <= 0) {
             clearInterval(intervalGame);
             for (var i = 1; i <= 4; i++) {
@@ -160,25 +159,25 @@ var shootChicken = (function () {
     };
     var chickenFall = function (level) {
         var position = randomNumbers(width.min, width.max, 4);
-        if((level==1)||(level>1&&level==2)||(level>2&&level==3)||(level>3&&level==4)){
-            for(var i = 1;i<=level;i++){
-                chickenMove(elements['chicken'+i],levelSpeed[i-1]);
-                checkDown(elements['chicken'+i],elements.display,position[i-1]);
+        if ((level == 1) || (level > 1 && level == 2) || (level > 2 && level == 3) || (level > 3 && level == 4)) {
+            for (var i = 1; i <= level; i++) {
+                chickenMove(elements['chicken' + i], levelSpeed[i - 1]);
+                checkDown(elements['chicken' + i], elements.display, position[i - 1]);
             }
         }
     };
     var action = function () {
         play = true;
-        var randomPositions = random[Math.floor(Math.random() * random.length)];
+        var randomPosition = random[Math.floor(Math.random() * random.length)];
         shoot();
-        addChicken(elements.chicken1, randomPositions);
+        addChicken(elements.chicken1, randomPosition);
         intervalGame = setInterval(function () {
             chickenFall(level);
             levelUp(score);
             lifeDown(lifeLeft);
             writeScore(elements.score, score);
             writeLevel(elements.level, level);
-            checkGameOver();
+            checkGameOver(lifeLeft);
         }, speedInterval);
     };
     var start = function () {
@@ -199,6 +198,5 @@ var shootChicken = (function () {
         proba: start
     }
 }());
-
 shootChicken.proba();
 

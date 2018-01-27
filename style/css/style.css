@@ -549,7 +549,11 @@ body {
   box-sizing: border-box;
   min-width: 200px;
   min-height: 85vh;
-  padding: 5px; }
+  padding: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
   #display-info-score {
     -ms-flex-item-align: center;
     align-self: center;
@@ -615,7 +619,11 @@ body {
   max-width: 1200px;
   min-width: 1200px;
   min-height: 100px;
-  margin: 10px auto; }
+  margin: 10px auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
   #button-info {
     border: 5px solid #98351C;
     min-width: 600px;

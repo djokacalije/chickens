@@ -5,6 +5,7 @@
     min-width: 1200px;
     min-height: 100px;
     margin: 10px auto;
+    user-select: none;
 
     &-info{
         border: 5px solid $chickenColor;
