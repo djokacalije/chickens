@@ -2,12 +2,13 @@ var shootChicken = (function () {
     var level = 1;
     var lifeLeft = 3;
     var gemeOver = false;
-    var score = 1;
+    var score = 0;
     var counterInterval;
     var introInterval;
     var speedIntertval = 40;
     var intervalGame;
     var play = false;
+    var levelSpeed = [6,7,10,12];
 
     $("body").on("contextmenu",function(e){
         return false;
@@ -30,28 +31,42 @@ var shootChicken = (function () {
         }
         return returnArray;
     };
+    var writeText = function(el,text){
+        el.textContent = text;
+    }
+    var hide = function(el){
+        el.style.display = 'none';
+    }
+    var show = function(el){
+        el.style.display = 'block';
+    }
     var levelUp = function (score) {
-        if (score >= 50) {
-          level=2;
-        }
-        if (score >= 100) {
-          level=3;
-        }
-        if (score >= 150) {
+      var levelIncreased=false;
+        if (score >= 60 && level==3) {
            level=4;
+           levelIncreased=true;
+        }else if (score >= 40 && level==2) {
+          level=3;
+          levelIncreased=true;
+        }else if (score >= 5 && level==1) {
+          level=2;
+          levelIncreased=true;
         }
+       if(levelIncreased){
+            var position = randomNumbers(10,900,4);
+            addChicken(elements['chicken'+level],position[level-1]);
+       }
     }
-    var writeScore = function (score) {
-        elements.score.textContent = score;
+    var writeScore = function (element,score) {
+        writeText(element,score);
     }
-
-    var writeLevel = function (level) {
-        elements.level.textContent = level;
+    var writeLevel = function (el,level) {
+        writeText(el,level);
     }
     var writeGameOverScore = function (score) {
-       
-            elements.displayGameOver.style.display = 'block';
-            elements.gameOverScore.textContent = score;
+            hide(elements.lifeEgg3);
+            show(elements.displayGameOver);
+            writeText(elements.gameOverScore,score);
             if (score <= 100) {
                 elements.trophy.setAttribute('src', '/img/throphy/trophy-bronze.png');
             }
@@ -61,27 +76,26 @@ var shootChicken = (function () {
             if (score >= 250) {
                 elements.trophy.setAttribute('src', '/img/throphy/trophy-gold.png');
             }
-        
     }
 
     var counterTimer = function () {
         sound.intro.stop();
         clearInterval(introInterval);
-        elements.displayIndikator.style.display = 'none';
-        elements.displayCounter.style.display = 'block';
+        hide(elements.displayIndikator);
+        show(elements.displayCounter);
         var timer = 6
         counterInterval = setInterval(function () {
             sound.gun.play();
             timer--;
             elements.displayCounter.classList.toggle('startGameIndikator');
-            elements.displayCounter.textContent = timer;
+            writeText(elements.displayCounter,timer);
             if (timer <= 0) {
                 sound.gun.stop();
                 sound.start.play();
-                elements.displayCounter.textContent = 'SHOOT!';
+                writeText(elements.displayCounter,'SHOOT!');
                 clearInterval(counterInterval);
                 setTimeout(function () {
-                    elements.displayCounter.style.display = 'none';
+                    hide(elements.displayCounter);
                 }, 1000)
             }
         }, 1000)
@@ -92,46 +106,39 @@ var shootChicken = (function () {
         return chicken[Math.floor(Math.random() * chicken.length)];
     };
     
-    var chickenSetting = function (chicken, position) {
+    var addChicken = function (chicken, position) {
         chicken.setAttribute('src', '/img/chicken/' + randomChicken())
         chicken.style.top = -150 + 'px';
         chicken.style.left = position + 'px';
-        chicken.style.display = 'block';
+        show(chicken);
     }
     
     var checkDown = function (chicken, display, position) {
         if (chicken.offsetTop > display.offsetHeight) {
             lifeLeft--;
-            chicken.style.display = 'none';
-            chickenSetting(chicken, position);
+            hide(chicken);
+            addChicken(chicken, position);
         }
     }
-    var lifeDown = function () {
-        if (lifeLeft == 2) {
-            elements.lifeEgg3.style.display = 'none';
-        }
-        if (lifeLeft == 1) {
-            elements.lifeEgg2.style.display = 'none';
-        }
-        if (lifeLeft == 0) {
-            elements.lifeEgg1.style.display = 'none';
+    var lifeDown = function (lifeLeft) {
+        if(lifeLeft<3 && lifeLeft>0){
+            hide(elements['lifeEgg'+lifeLeft]);
         }
     };
     var checkGameOver = function () {
         if (lifeLeft <= 0) {
             clearInterval(intervalGame);
-            elements.chicken1.style.display = 'none';
-            elements.chicken2.style.display = 'none';
-            elements.chicken3.style.display = 'none';
-            elements.chicken4.style.display = 'none';
+            for(var i = 1;i<=4;i++){
+                hide(elements['chicken'+i]);
+              }
             writeGameOverScore(score);
             sound.intro.play();
         }
     }
-    var addBlo0d = function (positionLeft, positionTop) {
-        elements.blood.style.top = positionTop + 'px';
-        elements.blood.style.left = positionLeft + 'px';
-        elements.blood.style.display = 'block'
+    var addBlo0d = function (positionLeft, positionTop,blood) {
+        blood.style.top = positionTop + 'px';
+        blood.style.left = positionLeft + 'px';
+        show(blood);
     }
     var shoot = function () {
         $("img").on("contextmenu",function(){
@@ -139,75 +146,51 @@ var shootChicken = (function () {
          }); 
         elements.display.addEventListener('click', function (event) {
             var random = randomNumbers(10, 900, 4);
+            var position = random[Math.floor(Math.random()*random.length)];
             sound.gun.play();
             var target = event.target;
-            if (target.id == 'chicken-1') {
+            if (target.hasAttribute("data-target")) {
                 score++;
                 sound.chicken.play();
-                addBlo0d(target.offsetLeft - 50, target.offsetTop - 50);
-                target.style.display = 'none';
-                chickenSetting(target, random[0]);
+                addBlo0d(target.offsetLeft - 50, target.offsetTop - 50,elements.blood);
+                hide(target);
+                addChicken(target, position);
             }
-            if (target.id == 'chicken-2') {
-                score++;
-                sound.chicken.play();
-                addBlo0d(target.offsetLeft - 50, target.offsetTop - 50);
-                target.style.display = 'none';
-                chickenSetting(target, random[1]);
-            }
-            if (target.id == 'chicken-3') {
-                score++;
-                sound.chicken.play();
-                addBlo0d(target.offsetLeft - 50, target.offsetTop - 50);
-                target.style.display = 'none';
-                chickenSetting(target, random[2]);
-            }
-            if (target.id == 'chicken-4') {
-                score++;
-                sound.chicken.play();
-                addBlo0d(target.offsetLeft - 50, target.offsetTop - 50);
-                target.style.display = 'none';
-                chickenSetting(target, random[3]);
-            }
-
         })
     }
-    var swichLevel = function(){
-        if(level==2){
+    var chickenSetting = function(level){
+        var randomPositions = randomNumbers(10, 900, 4);
+        if(level>1 && level<5){
             console.log('tu sam');
-        clearTimeout(level2);
+            for(var i = 1;i<level;i++){
+                
+                checkDown(elements['chicken'+i],elements.display,randomPositions[i-1]);
+            }
         }
-        
     }
-   
+    var chickenMove = function(chicken,speed){
+           var position = chicken.offsetTop+=speed;
+           chicken.style.top = position+'px'
+    }
     var action = function () {
         play = true;
         var position = randomNumbers(10,900,4);
         shoot();
-        var levelSpeed = [6,7,10,12]
-        chickenSetting(elements.chicken1,position[0]);
-         var level2 = setTimeout(function(){
-            chickenSetting(elements.chicken2,position[1])
-        },20000);
-        var level3 = setTimeout(function(){
-            chickenSetting(elements.chicken3,position[2])
-        },30000);
-        var level4 = setTimeout(function(){
-            chickenSetting(elements.chicken4,position[3])
-        },40000);
+        addChicken(elements.chicken1,position[0]);
         intervalGame = setInterval(function () {
             var randomPositions = randomNumbers(10, 900, 4);
-            $("#chicken-1").css('top', $("#chicken-1").position().top + levelSpeed[0]);
-            $("#chicken-2").css('top', $("#chicken-2").position().top + levelSpeed[1]);
-            $("#chicken-3").css('top', $("#chicken-3").position().top + levelSpeed[2]);
-            $("#chicken-4").css('top', $("#chicken-4").position().top + levelSpeed[3]);
+            chickenMove(elements.chicken1,levelSpeed[0]);
+            chickenMove(elements.chicken2,levelSpeed[1]);
+            chickenMove(elements.chicken3,levelSpeed[2]);
+            chickenMove(elements.chicken4,levelSpeed[3]);
             checkDown(elements.chicken1, elements.display, randomPositions[0]);
             checkDown(elements.chicken2, elements.display, randomPositions[1]);
             checkDown(elements.chicken3, elements.display, randomPositions[2]);
             checkDown(elements.chicken4, elements.display, randomPositions[3]);
-            lifeDown();
-            writeScore(score);
-            writeLevel(level);
+            // chickenSetting(level);
+            lifeDown(lifeLeft);
+            writeScore(elements.score,score);
+            writeLevel(elements.level,level);
             levelUp(score);
             checkGameOver();
         }, speedIntertval);
@@ -216,7 +199,7 @@ var shootChicken = (function () {
     var start = function(){
         elements.buttonStart.addEventListener('click',function(){
             if(play==false){
-                elements.buttonText.textContent = 'Reset Game';
+                writeText(elements.buttonText,'Reset Game');
                 counterTimer();
                 setTimeout(function(){
                     action();
@@ -227,9 +210,14 @@ var shootChicken = (function () {
             }
         })
     }
+    
     return {
         proba: start
     }
 }());
 
 shootChicken.proba();
+
+for(var i = 1;i<4;i++){
+    console.log($('chicken'+i));
+}
