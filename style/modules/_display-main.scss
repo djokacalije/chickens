@@ -14,12 +14,18 @@
     position: absolute;
     z-index: 2;
     user-select: none; 
+    user-drag:none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
   }
   #blood{
     position: absolute;
     z-index: 1;
     display: none;
     user-select: none;
+    user-drag:none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
   }
   
   &:hover{

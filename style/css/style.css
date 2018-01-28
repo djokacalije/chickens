@@ -466,7 +466,10 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; }
+    user-select: none;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none; }
   #display-main #blood {
     position: absolute;
     z-index: 1;
@@ -474,7 +477,10 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; }
+    user-select: none;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none; }
   #display-main:hover {
     cursor: url("/img/crosshair/corsshair-small.png"), auto; }
   #display-main-indikator {

@@ -4,13 +4,19 @@ var shootChicken = (function () {
         score = 0,
         counterInterval,
         introInterval,
-        speedInterval = 40,
+        speedInterval = 50,
         intervalGame,
         play = false,
-        levelSpeed = [4, 7, 9, 11],
+        chickenNumbers = 5,
+        levelSpeed = [7, 8, 12, 13,14],
         width = {
-            min: 10,
+            min: 1,
             max: 900
+        },
+        trophy = {
+            gold : '/img/trophy/trophy-gold.png',
+            silver : '/img/trophy/trophy-silver.png',
+            bronze : '/img/trophy/trophy-bronze.png'
         };
     document.addEventListener('contextmenu',function(e){
         e.preventDefault();
@@ -36,7 +42,7 @@ var shootChicken = (function () {
         var chicken = ['chicken-1.png', 'chicken-2.png', 'chicken-3.png'];
         return chicken[Math.floor(Math.random() * chicken.length)];
     };
-    var random = randomNumbers(width.min, width.max, 4);
+    var random = randomNumbers(width.min, width.max, chickenNumbers);
     var writeText = function (el, text) {
         el.textContent = text;
     };
@@ -65,10 +71,13 @@ var shootChicken = (function () {
     };
     var levelUp = function (score) {
         var levelIncreased = false;
-        if (score >= 45 && level == 3) {
+        if(score>=130&&level==4){
+            level = 5;
+            levelIncreased = true;
+        } else if (score >= 95 && level == 3) {
             level = 4;
             levelIncreased = true;
-        } else if (score >= 30 && level == 2) {
+        } else if (score >= 40 && level == 2) {
             level = 3;
             levelIncreased = true;
         } else if (score >= 15 && level == 1) {
@@ -76,7 +85,7 @@ var shootChicken = (function () {
             levelIncreased = true;
         }
         if (levelIncreased) {
-            var position = randomNumbers(width.min, width.max, 4);
+            var position = randomNumbers(width.min, width.max, chickenNumbers);
             addChicken(elements['chicken' + level], position[level - 1]);
         }
     };
@@ -86,19 +95,21 @@ var shootChicken = (function () {
     var writeLevel = function (el, level) {
         writeText(el, level);
     };
+    var getTrophy = function(element,score,bronze,silver,gold){
+        if(score<=100){
+            element.setAttribute('src',bronze);
+        }
+        if(score>=101){
+            element.setAttribute('src',silver);
+        }
+        if(score>=150){
+            element.setAttribute('src',gold);
+        }
+    }
     var writeGameOverScore = function (score) {
         hide(elements.lifeEgg3);
         show(elements.displayGameOver);
         writeText(elements.gameOverScore, score);
-        if (score <= 100) {
-            elements.trophy.setAttribute('src', '/img/throphy/trophy-bronze.png');
-        }
-        if (score >= 100) {
-            elements.trophy.setAttribute('src', '/img/throphy/trophy-silver.png');
-        }
-        if (score >= 250) {
-            elements.trophy.setAttribute('src', '/img/throphy/trophy-gold.png');
-        }
     };
     var counterTimer = function () {
         sound.intro.stop();
@@ -130,7 +141,7 @@ var shootChicken = (function () {
     var checkGameOver = function (lifeLeft) {
         if (lifeLeft <= 0) {
             clearInterval(intervalGame);
-            for (var i = 1; i <= 4; i++) {
+            for (var i = 1; i <= chickenNumbers; i++) {
                 hide(elements['chicken' + i]);
             }
             writeGameOverScore(score);
@@ -144,7 +155,7 @@ var shootChicken = (function () {
     };
     var shoot = function () {
         elements.display.addEventListener('click', function (event) {
-            var random = randomNumbers(width.min, width.max, 4);
+            var random = randomNumbers(width.min, width.max, chickenNumbers);
             var position = random[Math.floor(Math.random() * random.length)];
             sound.gun.play();
             var target = event.target;
@@ -158,8 +169,8 @@ var shootChicken = (function () {
         })
     };
     var chickenFall = function (level) {
-        var position = randomNumbers(width.min, width.max, 4);
-        if ((level == 1) || (level > 1 && level == 2) || (level > 2 && level == 3) || (level > 3 && level == 4)) {
+        var position = randomNumbers(width.min, width.max, chickenNumbers);
+        if ((level == 1) || (level > 1 && level == 2) || (level > 2 && level == 3) || (level > 3 && level == 4)||(level > 4 && level == 5)) {
             for (var i = 1; i <= level; i++) {
                 chickenMove(elements['chicken' + i], levelSpeed[i - 1]);
                 checkDown(elements['chicken' + i], elements.display, position[i - 1]);
@@ -178,6 +189,7 @@ var shootChicken = (function () {
             writeScore(elements.score, score);
             writeLevel(elements.level, level);
             checkGameOver(lifeLeft);
+            getTrophy(elements.trophy,score,trophy.bronze,trophy.silver,trophy.gold);
         }, speedInterval);
     };
     var start = function () {

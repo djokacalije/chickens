@@ -18,7 +18,8 @@ var elements = {
     chicken1:document.getElementById('chicken-1'),
     chicken2:document.getElementById('chicken-2'),
     chicken3:document.getElementById('chicken-3'),
-    chicken4:document.getElementById('chicken-4')
+    chicken4:document.getElementById('chicken-4'),
+    chicken5:document.getElementById('chicken-5')
 }
 
 var sound = {
