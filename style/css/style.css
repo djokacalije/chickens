@@ -398,7 +398,11 @@ template {
   box-sizing: border-box; }
 
 body {
-  font-family: 'Supermercado One', cursive; }
+  font-family: 'Supermercado One', cursive;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
 
 .video-background {
   background: #000;
@@ -438,7 +442,7 @@ body {
   -ms-flex-direction: row;
   flex-direction: row;
   min-width: 1200px;
-  max-width: 1200px;
+  width: 1200px;
   z-index: 9999;
   margin: 0 auto;
   min-height: 85vh;

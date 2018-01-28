@@ -1,9 +1,8 @@
 .container{
-   
     display: flex;
     flex-direction: row;
     min-width: 1200px;
-    max-width: 1200px;
+    width: 1200px;
     z-index: 9999;
     margin: 0 auto;
     min-height: 85vh;
