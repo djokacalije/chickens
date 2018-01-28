@@ -7,4 +7,8 @@
     margin: 0 auto;
     min-height: 85vh;
     user-select: none;
+    @include laptop{
+        border: 5px solid red;
+        height: 100%;
+    }
 }

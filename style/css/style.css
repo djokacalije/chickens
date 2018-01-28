@@ -450,6 +450,10 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+  @media (max-height: 700px) {
+    .container {
+      border: 5px solid red;
+      height: 100%; } }
 
 #display-main {
   border: 5px solid #98351C;
