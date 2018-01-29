@@ -2,5 +2,8 @@
     display: flex;
     justify-content: flex-start;
     width: 200px;
-    min-height: 85vh;
+    height: 700px;
+    @include laptop{
+        height: 600px;
+    }
 }

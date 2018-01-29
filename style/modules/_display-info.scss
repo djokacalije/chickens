@@ -4,9 +4,14 @@
     justify-content: center;
     box-sizing: border-box;
     min-width: 200px;
-    min-height: 85vh;
+    height: 85vh;
     padding: 5px;
     user-select: none;
+    @include laptop{
+        justify-content: flex-start;
+        // border:5px solid red;
+        height: 600px;
+    }
 
 
 
@@ -23,6 +28,9 @@
         border: 5px solid $chickenColor;
         border-radius: 15px;
         box-shadow: -1px -1px 50px $chickenColor;
+        @include laptop{
+            height: 190px;
+        }
 
     }
     &-level{
@@ -37,6 +45,9 @@
         border: 5px solid $chickenColor;
         border-radius: 15px;
         box-shadow: -1px -1px 50px $chickenColor;
+        @include laptop{
+            height: 190px;
+        }
     }
     &-life{
         align-self: center;
@@ -45,6 +56,9 @@
         border: 5px solid $chickenColor;
         border-radius: 15px;
         box-shadow: -1px -1px 50px $chickenColor;
+        @include laptop{
+            height: 190px;
+        }
 
 
         &-picture{
@@ -54,14 +68,20 @@
             max-height: 53px;
             margin:5px auto;
             transform: translateX(10px);
+           
         }
      &-cowboy-picture{
          min-height: 180px;
          max-height: 180px;
          max-width: 200px;
          margin: 0 auto;
+        
          img{
              height: 180px;
+             @include laptop{
+                height: 150px;
+                transform: translate(15px,-20px)
+            }
          }
      }
     }

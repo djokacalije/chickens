@@ -403,6 +403,9 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+  @media (max-height: 800px) {
+    body {
+      min-height: 100vh; } }
 
 .video-background {
   background: #000;
@@ -450,15 +453,14 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  @media (max-height: 700px) {
+  @media (max-height: 800px) {
     .container {
-      border: 5px solid red;
-      height: 100%; } }
+      height: 600px; } }
 
 #display-main {
   border: 5px solid #98351C;
   min-width: 990px;
-  min-height: 85vh;
+  height: 85vh;
   margin-left: 5px;
   position: relative;
   background: rgba(255, 255, 255, 0.623);
@@ -467,6 +469,9 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+  @media (max-height: 800px) {
+    #display-main {
+      height: 600px; } }
   #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3, #display-main #chicken-4, #display-main #chicken-5, #display-main #chicken-6 {
     display: none;
     position: absolute;
@@ -499,6 +504,10 @@ body {
     font-size: 50px;
     -webkit-transform: translateY(350px);
     transform: translateY(350px); }
+    @media (max-height: 800px) {
+      #display-main-indikator {
+        -webkit-transform: translateY(220px);
+        transform: translateY(220px); } }
     #display-main-indikator-counter {
       max-width: 500px;
       margin: 0 auto;
@@ -507,6 +516,10 @@ body {
       font-size: 150px;
       -webkit-transform: translateY(300px);
       transform: translateY(300px); }
+      @media (max-height: 800px) {
+        #display-main-indikator-counter {
+          -webkit-transform: translateY(200px);
+          transform: translateY(200px); } }
   #display-main-info {
     border: 10px solid #98351C;
     min-width: 700px;
@@ -518,6 +531,10 @@ body {
     transform: translateY(250px);
     background: rgba(255, 255, 255, 0.623);
     display: none; }
+    @media (max-height: 800px) {
+      #display-main-info {
+        -webkit-transform: translateY(150px);
+        transform: translateY(150px); } }
     #display-main-info-chicken {
       position: absolute;
       top: 10px; }
@@ -546,7 +563,10 @@ body {
   -ms-flex-pack: start;
   justify-content: flex-start;
   width: 200px;
-  min-height: 85vh; }
+  height: 700px; }
+  @media (max-height: 800px) {
+    #display-left {
+      height: 600px; } }
 
 #display-info {
   display: -webkit-box;
@@ -562,12 +582,18 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   min-width: 200px;
-  min-height: 85vh;
+  height: 85vh;
   padding: 5px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+  @media (max-height: 800px) {
+    #display-info {
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      height: 600px; } }
   #display-info-score {
     -ms-flex-item-align: center;
     align-self: center;
@@ -583,6 +609,9 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
+    @media (max-height: 800px) {
+      #display-info-score {
+        height: 190px; } }
   #display-info-level {
     -ms-flex-item-align: center;
     align-self: center;
@@ -597,6 +626,9 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
+    @media (max-height: 800px) {
+      #display-info-level {
+        height: 190px; } }
   #display-info-life {
     -ms-flex-item-align: center;
     align-self: center;
@@ -606,6 +638,9 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
+    @media (max-height: 800px) {
+      #display-info-life {
+        height: 190px; } }
     #display-info-life-picture {
       min-width: 130px;
       max-width: 130px;
@@ -621,6 +656,11 @@ body {
       margin: 0 auto; }
       #display-info-life-cowboy-picture img {
         height: 180px; }
+        @media (max-height: 800px) {
+          #display-info-life-cowboy-picture img {
+            height: 150px;
+            -webkit-transform: translate(15px, -20px);
+            transform: translate(15px, -20px); } }
 
 #button {
   display: -webkit-box;
@@ -632,7 +672,6 @@ body {
   flex-direction: column;
   max-width: 1200px;
   min-width: 1200px;
-  min-height: 100px;
   margin: 10px auto;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -647,6 +686,9 @@ body {
     -webkit-transform: translateX(100px);
     transform: translateX(100px);
     background: rgba(35, 109, 35, 0.603); }
+    @media (max-height: 800px) {
+      #button-info {
+        display: none; } }
     #button-info-text {
       color: white;
       text-align: center;
@@ -655,12 +697,20 @@ body {
     border: 5px solid green;
     min-width: 200px;
     max-width: 200px;
-    min-height: 45px;
+    height: 45px;
     max-height: 45px;
     margin: 3px auto;
     -webkit-transform: translateX(100px);
     transform: translateX(100px);
     border-radius: 20px; }
+    @media (max-height: 800px) {
+      #button-startGame {
+        position: absolute;
+        top: 428px;
+        -webkit-transform: translate(10px, 170px);
+        transform: translate(10px, 170px);
+        min-width: 180px;
+        background: rgba(0, 0, 0, 0.548); } }
     #button-startGame-text {
       color: white;
       text-align: center;
@@ -670,6 +720,9 @@ body {
       font-weight: 700; }
       #button-startGame-text:hover {
         cursor: pointer; }
+  @media (max-height: 800px) {
+    #button {
+      margin-top: 0; } }
 
 .startGameIndikator {
   color: #98351C; }

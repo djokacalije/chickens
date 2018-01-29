@@ -7,7 +7,7 @@ var shootChicken = (function () {
         speedInterval = 50,
         intervalGame,
         play = false,
-        chickenNumbers = 5,
+        numberOfChickens = 5,
         levelSpeed = [7, 8, 12, 13,14],
         width = {
             min: 1,
@@ -42,7 +42,7 @@ var shootChicken = (function () {
         var chicken = ['chicken-1.png', 'chicken-2.png', 'chicken-3.png'];
         return chicken[Math.floor(Math.random() * chicken.length)];
     };
-    var random = randomNumbers(width.min, width.max, chickenNumbers);
+    var random = randomNumbers(width.min, width.max, numberOfChickens);
     var writeText = function (el, text) {
         el.textContent = text;
     };
@@ -85,7 +85,7 @@ var shootChicken = (function () {
             levelIncreased = true;
         }
         if (levelIncreased) {
-            var position = randomNumbers(width.min, width.max, chickenNumbers);
+            var position = randomNumbers(width.min, width.max, numberOfChickens);
             addChicken(elements['chicken' + level], position[level - 1]);
         }
     };
@@ -141,7 +141,7 @@ var shootChicken = (function () {
     var checkGameOver = function (lifeLeft) {
         if (lifeLeft <= 0) {
             clearInterval(intervalGame);
-            for (var i = 1; i <= chickenNumbers; i++) {
+            for (var i = 1; i <= numberOfChickens; i++) {
                 hide(elements['chicken' + i]);
             }
             writeGameOverScore(score);
@@ -155,7 +155,7 @@ var shootChicken = (function () {
     };
     var shoot = function () {
         elements.display.addEventListener('click', function (event) {
-            var random = randomNumbers(width.min, width.max, chickenNumbers);
+            var random = randomNumbers(width.min, width.max, numberOfChickens);
             var position = random[Math.floor(Math.random() * random.length)];
             sound.gun.play();
             var target = event.target;
@@ -169,7 +169,7 @@ var shootChicken = (function () {
         })
     };
     var chickenFall = function (level) {
-        var position = randomNumbers(width.min, width.max, chickenNumbers);
+        var position = randomNumbers(width.min, width.max, numberOfChickens);
         if ((level == 1) || (level > 1 && level == 2) || (level > 2 && level == 3) || (level > 3 && level == 4)||(level > 4 && level == 5)) {
             for (var i = 1; i <= level; i++) {
                 chickenMove(elements['chicken' + i], levelSpeed[i - 1]);

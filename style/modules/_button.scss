@@ -3,10 +3,9 @@
     flex-direction: column;
     max-width: 1200px;
     min-width: 1200px;
-    min-height: 100px;
+    // min-height: 100px;
     margin: 10px auto;
     user-select: none;
-
     &-info{
         border: 5px solid $chickenColor;
         min-width: 600px;
@@ -15,6 +14,9 @@
         margin: 0 auto;
         transform: translateX(100px);
         background: rgba(35, 109, 35, 0.603);
+        @include laptop{
+            display: none;
+        }
 
         &-text{
             color: white;
@@ -26,11 +28,18 @@
         border: 5px solid green;
         min-width: 200px;
         max-width: 200px;
-        min-height: 45px;
+        height: 45px;
         max-height: 45px;
         margin: 3px auto;
         transform: translateX(100px);
         border-radius: 20px;
+        @include laptop{
+            position: absolute;
+            top: 428px;
+            transform: translate(10px,170px);
+            min-width: 180px;
+            background: $chickenBoxColor;
+        }
 
         &-text{
             color:white;
@@ -43,5 +52,8 @@
                 cursor: pointer;
             }
         }
+    }
+    @include laptop{
+        margin-top: 0;
     }
 }
