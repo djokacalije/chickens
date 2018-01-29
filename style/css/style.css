@@ -403,7 +403,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  @media (max-height: 800px) {
+  @media (max-height: 780px) {
     body {
       min-height: 100vh; } }
 
@@ -453,7 +453,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  @media (max-height: 800px) {
+  @media (max-height: 780px) {
     .container {
       height: 600px; } }
 
@@ -469,7 +469,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  @media (max-height: 800px) {
+  @media (max-height: 780px) {
     #display-main {
       height: 600px; } }
   #display-main #chicken-1, #display-main #chicken-2, #display-main #chicken-3, #display-main #chicken-4, #display-main #chicken-5, #display-main #chicken-6 {
@@ -504,7 +504,7 @@ body {
     font-size: 50px;
     -webkit-transform: translateY(350px);
     transform: translateY(350px); }
-    @media (max-height: 800px) {
+    @media (max-height: 780px) {
       #display-main-indikator {
         -webkit-transform: translateY(220px);
         transform: translateY(220px); } }
@@ -516,7 +516,7 @@ body {
       font-size: 150px;
       -webkit-transform: translateY(300px);
       transform: translateY(300px); }
-      @media (max-height: 800px) {
+      @media (max-height: 780px) {
         #display-main-indikator-counter {
           -webkit-transform: translateY(200px);
           transform: translateY(200px); } }
@@ -531,7 +531,7 @@ body {
     transform: translateY(250px);
     background: rgba(255, 255, 255, 0.623);
     display: none; }
-    @media (max-height: 800px) {
+    @media (max-height: 780px) {
       #display-main-info {
         -webkit-transform: translateY(150px);
         transform: translateY(150px); } }
@@ -564,7 +564,7 @@ body {
   justify-content: flex-start;
   width: 200px;
   height: 700px; }
-  @media (max-height: 800px) {
+  @media (max-height: 780px) {
     #display-left {
       height: 600px; } }
 
@@ -588,7 +588,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  @media (max-height: 800px) {
+  @media (max-height: 780px) {
     #display-info {
       -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -609,7 +609,7 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
-    @media (max-height: 800px) {
+    @media (max-height: 780px) {
       #display-info-score {
         height: 190px; } }
   #display-info-level {
@@ -626,7 +626,7 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
-    @media (max-height: 800px) {
+    @media (max-height: 780px) {
       #display-info-level {
         height: 190px; } }
   #display-info-life {
@@ -638,7 +638,7 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
-    @media (max-height: 800px) {
+    @media (max-height: 780px) {
       #display-info-life {
         height: 190px; } }
     #display-info-life-picture {
@@ -656,7 +656,7 @@ body {
       margin: 0 auto; }
       #display-info-life-cowboy-picture img {
         height: 180px; }
-        @media (max-height: 800px) {
+        @media (max-height: 780px) {
           #display-info-life-cowboy-picture img {
             height: 150px;
             -webkit-transform: translate(15px, -20px);
@@ -686,7 +686,7 @@ body {
     -webkit-transform: translateX(100px);
     transform: translateX(100px);
     background: rgba(35, 109, 35, 0.603); }
-    @media (max-height: 800px) {
+    @media (max-height: 780px) {
       #button-info {
         display: none; } }
     #button-info-text {
@@ -703,7 +703,7 @@ body {
     -webkit-transform: translateX(100px);
     transform: translateX(100px);
     border-radius: 20px; }
-    @media (max-height: 800px) {
+    @media (max-height: 780px) {
       #button-startGame {
         position: absolute;
         top: 428px;
@@ -720,7 +720,7 @@ body {
       font-weight: 700; }
       #button-startGame-text:hover {
         cursor: pointer; }
-  @media (max-height: 800px) {
+  @media (max-height: 780px) {
     #button {
       margin-top: 0; } }
 
