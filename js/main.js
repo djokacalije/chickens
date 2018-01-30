@@ -145,6 +145,7 @@ var shootChicken = (function () {
                 hide(elements['chicken' + i]);
             }
             writeGameOverScore(score);
+            writeText(elements.buttonReset,'New Game');
             sound.intro.play();
         }
     };
@@ -192,18 +193,24 @@ var shootChicken = (function () {
             getTrophy(elements.trophy,score,trophy.bronze,trophy.silver,trophy.gold);
         }, speedInterval);
     };
+    var resetGame = function(){
+        elements.buttonReset.addEventListener('click',function(){
+            window.location.reload();
+        })
+    }
     var start = function () {
         elements.buttonStart.addEventListener('click', function () {
             if (play == false) {
-                writeText(elements.buttonText, 'Reset Game');
+                hide(elements.buttonStart);
+                resetGame();
                 counterTimer();
                 setTimeout(function () {
                     action();
                 }, 6000)
             }
-            if (play == true) {
-                window.location.reload();
-            }
+            // if (play == true) {
+            //     window.location.reload();
+            // }
         })
     };
     return {

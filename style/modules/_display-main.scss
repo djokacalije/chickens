@@ -1,17 +1,13 @@
 #display-main{
   border: 5px solid $chickenColor;
   min-width: 990px;
-  height: 85vh;
+  height: 100vh;
   margin-left: 5px;
   position: relative;
   background: $mainWhite;
   overflow: hidden;
   user-select: none;
-  @include laptop{
-    height: 600px;
-    // margin-top: 15px;
-
-}
+  
 
 
   #chicken-1, #chicken-2,#chicken-3,#chicken-4,#chicken-5,#chicken-6{
@@ -44,8 +40,9 @@
     font-size: 50px;
     transform: translateY(350px);
     @include laptop{
-      transform: translateY(220px);
+      transform: translateY(200px);
     }
+    
 
     &-counter{
       max-width: 500px;
@@ -53,10 +50,11 @@
       text-align: center;
       font-weight: 700;
       font-size: 150px;
-      transform: translateY(300px);
+      transform: translateY(350px);
       @include laptop{
-        transform: translateY(200px);
+        transform: translateY(240px);
       }
+      
     }
   }
   &-info{
@@ -66,12 +64,13 @@
     min-height: 300px;
     max-height: 500px;
     margin: 0 auto;
-    transform: translateY(250px);
+    transform: translateY(300px);
     background:$mainWhite;
     display: none;
     @include laptop{
-      transform: translateY(150px)
-  }
+      transform: translateY(50%);
+    }
+   
 
     &-chicken{
       position: absolute;

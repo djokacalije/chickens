@@ -2,8 +2,4 @@
 body{
     font-family: 'Supermercado One', cursive;
     user-select: none;
-    @include laptop{
-        // overflow: hidden;
-        min-height: 100vh;
-    }
 }

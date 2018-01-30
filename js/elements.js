@@ -10,6 +10,7 @@ var elements = {
     gameOverScore:document.getElementById('display-main-info-text-score'),
     trophy:document.getElementById('throphy'),
     buttonStart:document.getElementById('button-startGame'),
+    buttonReset:document.getElementById('button-reset'),
     buttonText:document.getElementById('button-startGame-text'),
     blood:document.getElementById('blood'),
     lifeEgg1:document.getElementById('life-1'),

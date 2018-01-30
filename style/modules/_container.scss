@@ -5,9 +5,7 @@
     width: 1200px;
     z-index: 9999;
     margin: 0 auto;
-    min-height: 85vh;
+    height: 100vh;
     user-select: none;
-    @include laptop{
-        height: 600px;
-    }
+   
 }
