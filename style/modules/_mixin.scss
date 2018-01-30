@@ -1,5 +1,5 @@
 @mixin laptop {
-    @media (max-height: 780px) {
+    @media screen and (max-height: 780px) {
       @content;
     }
   }
