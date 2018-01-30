@@ -14,9 +14,9 @@ var shootChicken = (function () {
             max: 900
         },
         trophy = {
-            gold : 'img/trophy/trophy-gold.png',
-            silver : 'img/trophy/trophy-silver.png',
-            bronze : 'img/trophy/trophy-bronze.png'
+            gold : 'assets/images/trophy-gold.png',
+            silver : 'assets/images/trophy-silver.png',
+            bronze : 'assets/images/trophy-bronze.png'
         };
     document.addEventListener('contextmenu',function(e){
         e.preventDefault();
@@ -53,7 +53,7 @@ var shootChicken = (function () {
         el.style.display = 'block';
     };
     var addChicken = function (chicken, position) {
-        chicken.setAttribute('src', 'img/chicken/' + randomChicken());
+        chicken.setAttribute('src', 'assets/images/' + randomChicken());
         chicken.style.top = -150 + 'px';
         chicken.style.left = position + 'px';
         show(chicken);
