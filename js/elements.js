@@ -24,17 +24,17 @@ var elements = {
 
 var sound = {
     intro: new Howl({
-        src:['/sounds/intro.ogg'],
+        src:['sounds/intro.ogg'],
         loop:true
     }),
     gun: new Howl({
-        src:['/sounds/gunShot.ogg']
+        src:['sounds/gunShot.ogg']
     }),
     chicken: new Howl({
-        src:['/sounds/chicken.ogg']
+        src:['sounds/chicken.ogg']
     }),
     start: new Howl({
-        src:['/sounds/startGame.ogg']
+        src:['sounds/startGame.ogg']
     }),
 }
 
