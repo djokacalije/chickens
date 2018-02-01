@@ -495,7 +495,7 @@ body {
     font-size: 50px;
     -webkit-transform: translateY(350px);
     transform: translateY(350px); }
-    @media screen and (max-height: 900px) {
+    @media screen and (max-height: 860px) {
       #display-main-indikator {
         -webkit-transform: translateY(200px);
         transform: translateY(200px); } }
@@ -507,7 +507,7 @@ body {
       font-size: 150px;
       -webkit-transform: translateY(350px);
       transform: translateY(350px); }
-      @media screen and (max-height: 900px) {
+      @media screen and (max-height: 860px) {
         #display-main-indikator-counter {
           -webkit-transform: translateY(240px);
           transform: translateY(240px); } }
@@ -522,7 +522,7 @@ body {
     transform: translateY(300px);
     background: rgba(255, 255, 255, 0.623);
     display: none; }
-    @media screen and (max-height: 900px) {
+    @media screen and (max-height: 860px) {
       #display-main-info {
         -webkit-transform: translateY(50%);
         transform: translateY(50%); } }
@@ -581,7 +581,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  @media screen and (max-height: 900px) {
+  @media screen and (max-height: 860px) {
     #display-info {
       -webkit-transform: translateY(16px);
       transform: translateY(16px); } }
@@ -600,7 +600,7 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
-    @media screen and (max-height: 900px) {
+    @media screen and (max-height: 860px) {
       #display-info-score {
         height: 28vh; } }
   #display-info-level {
@@ -617,7 +617,7 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
-    @media screen and (max-height: 900px) {
+    @media screen and (max-height: 860px) {
       #display-info-level {
         height: 28vh; } }
   #display-info-life {
@@ -630,7 +630,7 @@ body {
     border-radius: 15px;
     -webkit-box-shadow: -1px -1px 50px #98351C;
     box-shadow: -1px -1px 50px #98351C; }
-    @media screen and (max-height: 900px) {
+    @media screen and (max-height: 860px) {
       #display-info-life {
         height: 28vh; } }
     #display-info-life-picture {
@@ -641,7 +641,7 @@ body {
       margin: 5px auto;
       -webkit-transform: translateX(10px);
       transform: translateX(10px); }
-      @media screen and (max-height: 900px) {
+      @media screen and (max-height: 860px) {
         #display-info-life-picture {
           height: 28vh; } }
     #display-info-life-cowboy-picture {
@@ -649,18 +649,18 @@ body {
       max-height: 180px;
       max-width: 200px;
       margin: 0 auto; }
-      @media screen and (max-height: 900px) {
+      @media screen and (max-height: 860px) {
         #display-info-life-cowboy-picture {
           height: 28vh; } }
       #display-info-life-cowboy-picture img {
         height: 180px; }
-        @media screen and (max-height: 900px) {
+        @media screen and (max-height: 860px) {
           #display-info-life-cowboy-picture img {
             height: 140px;
             -webkit-transform: translate(15px, -25px);
             transform: translate(15px, -25px); } }
 
-@media screen and (max-height: 900px) {
+@media screen and (max-height: 860px) {
   #life-1, #life-2, #life-3 {
     height: 40px;
     -webkit-transform: translateX(10px);
@@ -677,7 +677,7 @@ body {
   border-radius: 15px; }
   #button-startGame:hover {
     cursor: pointer; }
-  @media screen and (max-height: 900px) {
+  @media screen and (max-height: 860px) {
     #button-startGame {
       -webkit-transform: translateY(300px);
       transform: translateY(300px); } }
@@ -696,7 +696,7 @@ body {
   margin: 0 auto; }
   #button-reset:hover {
     cursor: pointer; }
-  @media screen and (max-height: 900px) {
+  @media screen and (max-height: 860px) {
     #button-reset {
       -webkit-transform: translateY(20px);
       transform: translateY(20px); } }

@@ -486,7 +486,7 @@ body {
     -webkit-user-drag: none;
     -moz-user-drag: none; }
   #display-main:hover {
-    cursor: url("../../img/crosshair/corsshair-small.png"), auto; }
+    cursor: url("assets/images/corsshair-small.png"), auto; }
   #display-main-indikator {
     max-width: 500px;
     text-align: center;

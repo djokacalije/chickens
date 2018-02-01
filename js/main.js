@@ -24,6 +24,7 @@ var shootChicken = (function () {
     sound.intro.play();
     introInterval = setInterval(function () {
         elements.displayIndikator.classList.toggle('startGameIndikator');
+        elements.buttonStart.classList.toggle('startGameIndikator');
     }, 500);
     var randomNumbers = function (start, end, count) {
         var returnArray = [],
@@ -149,7 +150,7 @@ var shootChicken = (function () {
             sound.intro.play();
         }
     };
-    var addBlo0d = function (positionLeft, positionTop, blood) {
+    var addBlood = function (positionLeft, positionTop, blood) {
         blood.style.top = positionTop + 'px';
         blood.style.left = positionLeft + 'px';
         show(blood);
@@ -163,7 +164,7 @@ var shootChicken = (function () {
             if (target.hasAttribute("data-target")) {
                 score++;
                 sound.chicken.play();
-                addBlo0d(target.offsetLeft - 50, target.offsetTop - 50, elements.blood);
+                addBlood(target.offsetLeft - 50, target.offsetTop - 50, elements.blood);
                 hide(target);
                 addChicken(target, position);
             }
@@ -208,9 +209,6 @@ var shootChicken = (function () {
                     action();
                 }, 6000)
             }
-            // if (play == true) {
-            //     window.location.reload();
-            // }
         })
     };
     return {
