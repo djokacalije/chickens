@@ -2,7 +2,8 @@ var shootChicken = (function () {
     var level = 1,
         lifeLeft = 3,
         score = 0,
-        ammunition = 10,
+        ammunition = 5,
+        magazine = 5,
         reload = false,
         counterInterval,
         introInterval,
@@ -166,7 +167,7 @@ var shootChicken = (function () {
     };
     var reloadAmmo = function(){
         if(reload){
-            ammunition = 10;
+            ammunition = magazine;
         };
         sound.reload.play();
     };
@@ -250,7 +251,7 @@ var shootChicken = (function () {
         elements.buttonReset.addEventListener('click',function(){
             window.location.reload();
         })
-    }
+    };
     var start = function () {
         elements.buttonStart.addEventListener('click', function () {
             if (play == false) {
