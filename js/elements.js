@@ -9,7 +9,11 @@ var elements = {
     displayGameOver:document.getElementById('display-main-info'),
     gameOverScore:document.getElementById('display-main-info-text-score'),
     trophy:document.getElementById('throphy'),
+    ammoDisplay:document.getElementById('display-main-ammo'),
+    ammoNumber:document.getElementById('display-main-ammo-number'),
+    ammoBox:document.getElementById('display-main-ammo-can'),
     buttonStart:document.getElementById('button-startGame'),
+    displayReload:document.getElementById('display-main-reload'),
     buttonReset:document.getElementById('button-reset'),
     buttonText:document.getElementById('button-startGame-text'),
     blood:document.getElementById('blood'),
@@ -37,6 +41,12 @@ var sound = {
     start: new Howl({
         src:['sounds/startGame.ogg']
     }),
-}
+    reload: new Howl({
+        src:['sounds/reload.ogg']
+    }),
+    gunEmpty:new Howl({
+        src:['sounds/emptyGun.ogg']
+    })
+};
 
 

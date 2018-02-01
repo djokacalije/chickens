@@ -2,6 +2,8 @@ var shootChicken = (function () {
     var level = 1,
         lifeLeft = 3,
         score = 0,
+        ammunition = 10,
+        reload = false,
         counterInterval,
         introInterval,
         speedInterval = 50,
@@ -109,6 +111,7 @@ var shootChicken = (function () {
     }
     var writeGameOverScore = function (score) {
         hide(elements.lifeEgg3);
+        hide(elements.displayReload);
         show(elements.displayGameOver);
         writeText(elements.gameOverScore, score);
     };
@@ -155,13 +158,60 @@ var shootChicken = (function () {
         blood.style.left = positionLeft + 'px';
         show(blood);
     };
+    var ammoDown = function(){
+        ammunition--;
+        if(ammunition==0){
+            ammunition=0;
+        }
+    };
+    var reloadAmmo = function(){
+        if(reload){
+            ammunition = 10;
+        };
+        sound.reload.play();
+    };
+    var showAmmo = function(ammoNumber,ammo){
+        if(ammo<0){
+            writeText(ammoNumber,0)
+        }else{
+            writeText(ammoNumber,ammo);
+        }
+    };
+    var shootSound = function(ammo){
+        if(ammo>=0){
+            sound.gun.play();
+        }
+        if(ammo<0){
+            sound.gunEmpty.play();
+        }
+    };
+    var showReloadMassage = function(displayReload,ammo){
+        if(ammo<=0){
+            show(displayReload);
+        }else{
+            hide(displayReload);
+        }
+    };
+    var loseAmmo = function(target){
+        if(target.hasAttribute('data-display')||target.hasAttribute('data-target')){
+            ammoDown();
+        }
+    };
     var shoot = function () {
+        show(elements.ammoBox);
+        show(elements.ammoDisplay);
         elements.display.addEventListener('click', function (event) {
             var random = randomNumbers(width.min, width.max, numberOfChickens);
             var position = random[Math.floor(Math.random() * random.length)];
-            sound.gun.play();
             var target = event.target;
-            if (target.hasAttribute("data-target")) {
+            loseAmmo(target);
+            shootSound(ammunition);
+            if(target.hasAttribute('data-ammo')){
+                ammunition=0;
+                reload=true;
+                reloadAmmo();
+            }
+            if (target.hasAttribute("data-target")&&ammunition>-1) {
                 score++;
                 sound.chicken.play();
                 addBlood(target.offsetLeft - 50, target.offsetTop - 50, elements.blood);
@@ -182,7 +232,7 @@ var shootChicken = (function () {
     var action = function () {
         play = true;
         var randomPosition = random[Math.floor(Math.random() * random.length)];
-        shoot();
+        shoot(ammunition);
         addChicken(elements.chicken1, randomPosition);
         intervalGame = setInterval(function () {
             chickenFall(level);
@@ -190,6 +240,8 @@ var shootChicken = (function () {
             lifeDown(lifeLeft);
             writeScore(elements.score, score);
             writeLevel(elements.level, level);
+            showAmmo(elements.ammoNumber,ammunition);
+            showReloadMassage(elements.displayReload,ammunition);
             checkGameOver(lifeLeft);
             getTrophy(elements.trophy,score,trophy.bronze,trophy.silver,trophy.gold);
         }, speedInterval);
