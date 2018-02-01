@@ -232,7 +232,7 @@ var shootChicken = (function () {
     var action = function () {
         play = true;
         var randomPosition = random[Math.floor(Math.random() * random.length)];
-        shoot(ammunition);
+        shoot();
         addChicken(elements.chicken1, randomPosition);
         intervalGame = setInterval(function () {
             chickenFall(level);
