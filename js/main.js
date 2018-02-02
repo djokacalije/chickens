@@ -34,7 +34,9 @@ var shootChicken = (function () {
     }, 500);
     var firefox = function(){
         if(navigator.userAgent.indexOf('Firefox')>-1){
-          levelSpeed = [1,2,6,7,8];
+          for(var i=0;i<levelSpeed.length;i++){
+              levelSpeed[i]-=5;
+          }
         }
     }();
     var randomNumbers = function (start, end, count) {
@@ -263,7 +265,6 @@ var shootChicken = (function () {
     var start = function () {
         elements.buttonStart.addEventListener('click', function () {
             if (play == false) {
-                // moz();
                 hide(elements.buttonStart);
                 resetGame();
                 counterTimer();
