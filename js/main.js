@@ -265,8 +265,8 @@ var shootChicken = (function () {
         })
     };
     return {
-        proba: start
+        game: start
     }
 }());
-shootChicken.proba();
+shootChicken.game();
 

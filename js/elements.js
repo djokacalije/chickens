@@ -25,7 +25,7 @@ var elements = {
     chicken3:document.getElementById('chicken-3'),
     chicken4:document.getElementById('chicken-4'),
     chicken5:document.getElementById('chicken-5')
-}
+};
 
 var sound = {
     intro: new Howl({
