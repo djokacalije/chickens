@@ -21,6 +21,9 @@ var shootChicken = (function () {
             silver : 'img/trophy/trophy-silver.png',
             bronze : 'img/trophy/trophy-bronze.png'
         };
+    document.addEventListener('dragstart', function (e) {
+            e.preventDefault();
+    });
     document.addEventListener('contextmenu',function(e){
         e.preventDefault();
     });
@@ -29,11 +32,11 @@ var shootChicken = (function () {
         elements.displayIndikator.classList.toggle('startGameIndikator');
         elements.buttonStart.classList.toggle('startGameIndikator');
     }, 500);
-    var moz = function(){
+    var firefox = function(){
         if(navigator.userAgent.indexOf('Firefox')>-1){
           levelSpeed = [1,2,6,7,8];
         }
-    };
+    }();
     var randomNumbers = function (start, end, count) {
         var returnArray = [],
             randomNumber;
@@ -250,7 +253,6 @@ var shootChicken = (function () {
             showReloadMassage(elements.displayReload,ammunition);
             checkGameOver(lifeLeft);
             getTrophy(elements.trophy,score,trophy.bronze,trophy.silver,trophy.gold);
-            console.log(levelSpeed);
         }, speedInterval);
     };
     var resetGame = function(){
@@ -261,7 +263,7 @@ var shootChicken = (function () {
     var start = function () {
         elements.buttonStart.addEventListener('click', function () {
             if (play == false) {
-                moz();
+                // moz();
                 hide(elements.buttonStart);
                 resetGame();
                 counterTimer();
