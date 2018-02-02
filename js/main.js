@@ -11,7 +11,7 @@ var shootChicken = (function () {
         intervalGame,
         play = false,
         numberOfChickens = 5,
-        levelSpeed = [7, 8, 12, 13,14],
+        levelSpeed = [5, 7, 10, 11,12],
         width = {
             min: 1,
             max: 900
@@ -29,6 +29,11 @@ var shootChicken = (function () {
         elements.displayIndikator.classList.toggle('startGameIndikator');
         elements.buttonStart.classList.toggle('startGameIndikator');
     }, 500);
+    var moz = function(){
+        if(navigator.userAgent.indexOf('Firefox')>-1){
+          levelSpeed = [1,2,6,7,8];
+        }
+    };
     var randomNumbers = function (start, end, count) {
         var returnArray = [],
             randomNumber;
@@ -245,6 +250,7 @@ var shootChicken = (function () {
             showReloadMassage(elements.displayReload,ammunition);
             checkGameOver(lifeLeft);
             getTrophy(elements.trophy,score,trophy.bronze,trophy.silver,trophy.gold);
+            console.log(levelSpeed);
         }, speedInterval);
     };
     var resetGame = function(){
@@ -255,6 +261,7 @@ var shootChicken = (function () {
     var start = function () {
         elements.buttonStart.addEventListener('click', function () {
             if (play == false) {
+                moz();
                 hide(elements.buttonStart);
                 resetGame();
                 counterTimer();
