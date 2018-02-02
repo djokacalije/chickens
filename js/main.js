@@ -7,11 +7,11 @@ var shootChicken = (function () {
         reload = false,
         counterInterval,
         introInterval,
-        speedInterval = 50,
+        speedInterval = 30,
         intervalGame,
         play = false,
         numberOfChickens = 5,
-        levelSpeed = [5, 7, 10, 11,12],
+        levelSpeed = [2, 3, 4, 5,6],
         width = {
             min: 1,
             max: 900
