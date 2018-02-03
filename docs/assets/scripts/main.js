@@ -1,14 +1,17 @@
-var shootChicken = (function () {
+var kokaRoka = (function () {
     var level = 1,
         lifeLeft = 3,
         score = 0,
+        ammunition = 5,
+        magazine = 5,
+        reload = false,
         counterInterval,
         introInterval,
-        speedInterval = 50,
+        speedInterval = 30,
         intervalGame,
         play = false,
         numberOfChickens = 5,
-        levelSpeed = [7, 8, 12, 13,14],
+        levelSpeed = [2, 3, 4, 5,6],
         width = {
             min: 1,
             max: 900
@@ -18,13 +21,24 @@ var shootChicken = (function () {
             silver : 'assets/images/trophy-silver.png',
             bronze : 'assets/images/trophy-bronze.png'
         };
+    document.addEventListener('dragstart', function (e) {
+            e.preventDefault();
+    });
     document.addEventListener('contextmenu',function(e){
         e.preventDefault();
     });
     sound.intro.play();
     introInterval = setInterval(function () {
         elements.displayIndikator.classList.toggle('startGameIndikator');
+        elements.buttonStart.classList.toggle('startGameIndikator');
     }, 500);
+    var firefox = function(){
+        if(navigator.userAgent.indexOf('Firefox')>-1){
+          for(var i=0;i<levelSpeed.length;i++){
+              levelSpeed[i]-=5;
+          }
+        }
+    }();
     var randomNumbers = function (start, end, count) {
         var returnArray = [],
             randomNumber;
@@ -108,6 +122,7 @@ var shootChicken = (function () {
     }
     var writeGameOverScore = function (score) {
         hide(elements.lifeEgg3);
+        hide(elements.displayReload);
         show(elements.displayGameOver);
         writeText(elements.gameOverScore, score);
     };
@@ -149,21 +164,68 @@ var shootChicken = (function () {
             sound.intro.play();
         }
     };
-    var addBlo0d = function (positionLeft, positionTop, blood) {
+    var addBlood = function (positionLeft, positionTop, blood) {
         blood.style.top = positionTop + 'px';
         blood.style.left = positionLeft + 'px';
         show(blood);
     };
+    var ammoDown = function(){
+        ammunition--;
+        if(ammunition==0){
+            ammunition=0;
+        }
+    };
+    var reloadAmmo = function(){
+        if(reload){
+            ammunition = magazine;
+        };
+        sound.reload.play();
+    };
+    var showAmmo = function(ammoNumber,ammo){
+        if(ammo<0){
+            writeText(ammoNumber,0)
+        }else{
+            writeText(ammoNumber,ammo);
+        }
+    };
+    var shootSound = function(ammo){
+        if(ammo>=0){
+            sound.gun.play();
+        }
+        if(ammo<0){
+            sound.gunEmpty.play();
+        }
+    };
+    var showReloadMassage = function(displayReload,ammo){
+        if(ammo<=0){
+            show(displayReload);
+        }else{
+            hide(displayReload);
+        }
+    };
+    var loseAmmo = function(target){
+        if(target.hasAttribute('data-display')||target.hasAttribute('data-target')){
+            ammoDown();
+        }
+    };
     var shoot = function () {
+        show(elements.ammoBox);
+        show(elements.ammoDisplay);
         elements.display.addEventListener('click', function (event) {
             var random = randomNumbers(width.min, width.max, numberOfChickens);
             var position = random[Math.floor(Math.random() * random.length)];
-            sound.gun.play();
             var target = event.target;
-            if (target.hasAttribute("data-target")) {
+            loseAmmo(target);
+            shootSound(ammunition);
+            if(target.hasAttribute('data-ammo')){
+                ammunition=0;
+                reload=true;
+                reloadAmmo();
+            }
+            if (target.hasAttribute("data-target")&&ammunition>-1) {
                 score++;
                 sound.chicken.play();
-                addBlo0d(target.offsetLeft - 50, target.offsetTop - 50, elements.blood);
+                addBlood(target.offsetLeft - 50, target.offsetTop - 50, elements.blood);
                 hide(target);
                 addChicken(target, position);
             }
@@ -179,7 +241,6 @@ var shootChicken = (function () {
         }
     };
     var action = function () {
-        play = true;
         var randomPosition = random[Math.floor(Math.random() * random.length)];
         shoot();
         addChicken(elements.chicken1, randomPosition);
@@ -189,6 +250,8 @@ var shootChicken = (function () {
             lifeDown(lifeLeft);
             writeScore(elements.score, score);
             writeLevel(elements.level, level);
+            showAmmo(elements.ammoNumber,ammunition);
+            showReloadMassage(elements.displayReload,ammunition);
             checkGameOver(lifeLeft);
             getTrophy(elements.trophy,score,trophy.bronze,trophy.silver,trophy.gold);
         }, speedInterval);
@@ -197,25 +260,40 @@ var shootChicken = (function () {
         elements.buttonReset.addEventListener('click',function(){
             window.location.reload();
         })
-    }
-    var start = function () {
-        elements.buttonStart.addEventListener('click', function () {
-            if (play == false) {
-                hide(elements.buttonStart);
+    };
+    var selectMode = function(){
+        hide(elements.displayIndikator);
+        hide(elements.buttonStart);
+        show(elements.selectMode);
+        elements.mode.addEventListener('change',function(){
+            for(var i=0;i<this.options.length;i++){
+                if(this.options[i].selected){
+                  elements.smiley.setAttribute('src','assets/images/'+this.options[i].value+'.png');
+                  speedInterval = this.options[i].value;
+                };
+            };
+        });
+    };
+    var gameBegin = function(){
+        elements.goButton.addEventListener('click',function(){
+            play = true;
+            hide(elements.selectMode);
                 resetGame();
                 counterTimer();
                 setTimeout(function () {
                     action();
                 }, 6000)
-            }
-            // if (play == true) {
-            //     window.location.reload();
-            // }
+        })
+    }
+    var start = function () {
+        elements.buttonStart.addEventListener('click', function () {
+            selectMode();
+            gameBegin();
         })
     };
     return {
-        proba: start
+        game: start
     }
 }());
-shootChicken.proba();
+kokaRoka.game();
 

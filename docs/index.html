@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Supermercado+One" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles/style.css">
-    <title>Shoot All Chickens</title>
+    <title>KokaRoka</title>
 </head>
 
 <body>
@@ -46,13 +46,32 @@
             </div>
             <div id="button-reset">Reset Game</div>
         </div>
-        <div id="display-main">
-            <img id="chicken-1" src="none" data-target alt="chicken">
-            <img id="chicken-2" src="none" data-target alt="chicken">
-            <img id="chicken-3" src="none" data-target alt="chicken">
-            <img id="chicken-4" src="none" data-target alt="chicken">
-            <img id="chicken-5" src="none" data-target alt="chicken">
-            <img id="blood" src="assets/images/blood-large.png" alt="blood">
+        <div data-display id="display-main">
+            <div id="display-main-ammo">
+                <p id="display-main-ammo-number"></p>
+                <img src="assets/images/bullet.png" alt="bullet">
+            </div>
+            <p id="display-main-reload">Reload!</p>
+            <div id="display-main-form">
+                <p id="display-main-form-text">Select Mode</p>
+                <form>
+                    <select name="mode" id="mode">
+                        <option value="30">Relax</option>
+                        <option value="20">Challenge</option>
+                        <option value="10">Mad Chicken</option>
+                    </select>
+                </form>
+                <div id="display-main-form-smiley">
+                    <img id="smiley" src="assets/images/30.png" alt="smiley">
+                </div>
+                <button id="display-main-form-button">GO!</button>
+            </div>
+            <img id="chicken-1" src="assets/images/chicken-1.png" data-target alt="chicken">
+            <img id="chicken-2" src="assets/images/chicken-1.png" data-target alt="chicken">
+            <img id="chicken-3" src="assets/images/chicken-1.png" data-target alt="chicken">
+            <img id="chicken-4" src="assets/images/chicken-1.png" data-target alt="chicken">
+            <img id="chicken-5" src="assets/images/chicken-1.png" data-target alt="chicken">
+            <img data-display id="blood" src="assets/images/blood-large.png" alt="blood">
             <p id="display-main-indikator">Press start game button to begin</p>
             <p id="display-main-indikator-counter"></p>
             <div id="display-main-info">
@@ -66,6 +85,10 @@
             </div>
             <div id="button-startGame">
                 <p id="button-startGame-text">Start Game</p>
+            </div>
+            <div data-ammo id="display-main-ammo-can">
+                <p data-ammo>Ammunition</p>
+                <img data-ammo src="assets/images/can.png" alt="can">
             </div>
         </div>
     </div>
