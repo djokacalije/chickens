@@ -24,6 +24,64 @@
   &:hover{
     cursor: url('../../img/crosshair/corsshair-small.png'), auto;
   }
+  
+
+  &-form{
+    display: none;
+    position: absolute;
+    border: 10px solid $chickenColor;
+    width: 400px;
+    height: 400px;
+    top: 25%;
+    transform: translateX(280px);
+    &:hover{
+      cursor: auto;
+    }
+
+    &-text{
+      text-align: center;
+      font-size: 45px;
+    }
+    form{
+      width: 127px;
+      margin: 0 auto;
+
+      #mode{
+        font-weight: 700;
+        border: 4px solid $chickenColor;
+        outline-color: $chickenColor;
+      }
+      option{
+        font-weight: 700;
+      }
+    }
+
+    &-smiley{
+      width: 83px;
+      min-height: 100px;
+      max-height: 100px;
+      margin-top: 65px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &-button{
+      border: 5px solid green;
+      border-radius: 10px;
+      width: 70px;
+      height: 40px;
+      margin-top: 5px;
+      transform: translateX(150px);
+      background: none;
+      font-weight: 700;
+      outline: none;
+
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+
   &-reload{
     position: absolute;
     font-size: 50px;

@@ -480,6 +480,49 @@ img {
     display: none; }
   #display-main:hover {
     cursor: url("../../img/crosshair/corsshair-small.png"), auto; }
+  #display-main-form {
+    display: none;
+    position: absolute;
+    border: 10px solid #98351C;
+    width: 400px;
+    height: 400px;
+    top: 25%;
+    -webkit-transform: translateX(280px);
+    transform: translateX(280px); }
+    #display-main-form:hover {
+      cursor: auto; }
+    #display-main-form-text {
+      text-align: center;
+      font-size: 45px; }
+    #display-main-form form {
+      width: 127px;
+      margin: 0 auto; }
+      #display-main-form form #mode {
+        font-weight: 700;
+        border: 4px solid #98351C;
+        outline-color: #98351C; }
+      #display-main-form form option {
+        font-weight: 700; }
+    #display-main-form-smiley {
+      width: 83px;
+      min-height: 100px;
+      max-height: 100px;
+      margin-top: 65px;
+      margin-left: auto;
+      margin-right: auto; }
+    #display-main-form-button {
+      border: 5px solid green;
+      border-radius: 10px;
+      width: 70px;
+      height: 40px;
+      margin-top: 5px;
+      -webkit-transform: translateX(150px);
+      transform: translateX(150px);
+      background: none;
+      font-weight: 700;
+      outline: none; }
+      #display-main-form-button:hover {
+        cursor: pointer; }
   #display-main-reload {
     position: absolute;
     font-size: 50px;

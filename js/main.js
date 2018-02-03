@@ -1,4 +1,4 @@
-var shootChicken = (function () {
+var kokaRoka = (function () {
     var level = 1,
         lifeLeft = 3,
         score = 0,
@@ -241,7 +241,6 @@ var shootChicken = (function () {
         }
     };
     var action = function () {
-        play = true;
         var randomPosition = random[Math.floor(Math.random() * random.length)];
         shoot();
         addChicken(elements.chicken1, randomPosition);
@@ -262,21 +261,39 @@ var shootChicken = (function () {
             window.location.reload();
         })
     };
-    var start = function () {
-        elements.buttonStart.addEventListener('click', function () {
-            if (play == false) {
-                hide(elements.buttonStart);
+    var selectMode = function(){
+        hide(elements.displayIndikator);
+        hide(elements.buttonStart);
+        show(elements.selectMode);
+        elements.mode.addEventListener('change',function(){
+            for(var i=0;i<this.options.length;i++){
+                if(this.options[i].selected){
+                  elements.smiley.setAttribute('src','img/smiley/'+this.options[i].value+'.png');
+                  speedInterval = this.options[i].value;
+                };
+            };
+        });
+    };
+    var gameBegin = function(){
+        elements.goButton.addEventListener('click',function(){
+            play = true;
+            hide(elements.selectMode);
                 resetGame();
                 counterTimer();
                 setTimeout(function () {
                     action();
                 }, 6000)
-            }
+        })
+    }
+    var start = function () {
+        elements.buttonStart.addEventListener('click', function () {
+            selectMode();
+            gameBegin();
         })
     };
     return {
         game: start
     }
 }());
-shootChicken.game();
+kokaRoka.game();
 
